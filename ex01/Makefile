@@ -1,12 +1,24 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: linhnguy <linhnguy@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/08/01 21:53:33 by linhnguy          #+#    #+#              #
+#    Updated: 2024/08/01 21:54:53 by linhnguy         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = phonebook
 HEADERS	= -I ./include
 
 CC = g++
 CFLAGS = -Wall -Wextra -Werror
 DEBUG_CFLAGS = -g
-SRCS =  main.c 
-OBJS = $(SRCS:.c=.o)
-DEBUG_OBJS = $(SRCS:.c=.debug.o)
+SRCS =  PhoneBook.cpp
+OBJS = $(SRCS:.cpp=.o)
+DEBUG_OBJS = $(SRCS:.cpp=.debug.o)
 RM = rm -f
 
 all: $(NAME)
