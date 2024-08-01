@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: linhnguy <linhnguy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/29 17:02:49 by linhnguy          #+#    #+#             */
-/*   Updated: 2024/07/31 11:12:55 by linhnguy         ###   ########.fr       */
+/*   Created: 2024/08/01 21:48:17 by linhnguy          #+#    #+#             */
+/*   Updated: 2024/08/01 21:48:51 by linhnguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,11 @@ int main(int c, char **v)
 			std::string str = v[i];
 			for (auto &letter : str) 
 				letter = std::toupper(letter);
-			std::cout << str << ' ';
+			std::cout << str;
 		}
 		std::cout << std::endl;
 	}
+	else
+		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
     return (0);
 }
