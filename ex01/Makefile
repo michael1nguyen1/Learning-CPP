@@ -1,4 +1,4 @@
-NAME = philo
+NAME = phonebook
 HEADERS	= -I ./include
 
 CC = g++
