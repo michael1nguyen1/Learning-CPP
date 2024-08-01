@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: linhnguy <linhnguy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 17:35:01 by linhnguy          #+#    #+#             */
-/*   Updated: 2024/08/01 19:26:17 by linhnguy         ###   ########.fr       */
+/*   Updated: 2024/08/01 22:04:34 by linhnguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ std::string PhoneBook::formatEntry(const std::string entry)
 
 void	PhoneBook::print_contacts()
 {
-	for (int i = 1; i < max_reached; i++)
+	for (int i = 0; i < max_reached; i++)
 	{
-		std::cout << std::left << std::setw(10) << i << "|";
+		std::cout << std::right << std::setw(10) << i + 1 << "|";
 		std::cout << std::right << std::setw(10) << formatEntry(entries[i].get_first_name()) << "|";
 		std::cout << std::right << std::setw(10) << formatEntry(entries[i].get_last_name()) << "|";
 		std::cout << std::right << std::setw(10) << formatEntry(entries[i].get_phone_number()) << "|";
@@ -68,16 +68,17 @@ void do_search(PhoneBook &phonebook)
 	{
 		std::cout << "Give me index" << std::endl;
 		std::getline(std::cin, input);
-		if (std::cin.eof())
-		{
-			std::cout << "You fucked up!\n";
-			return ;
-		}
+		// if (std::cin.eof())
+		// {
+		// 	std::cout << "You fucked up1!\n";
+		// 	return ;
+		// }
 		if (input.find_first_not_of("12345678") == std::string::npos)
 		{
 			i = std::stoi(input);
 			phonebook.print_contact(i);
 		}
+		i++;
 	} while (i == -1);
 }
 
@@ -93,7 +94,7 @@ int main()
 
 		if (std::cin.eof())
 		{
-			std::cout << "You fucked up!\n";
+			std::cout << "You fucked up2!\n";
 			return 0;
 		}
 		else if (cmd == "ADD")
