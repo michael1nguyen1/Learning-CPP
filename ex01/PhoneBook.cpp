@@ -6,7 +6,7 @@
 /*   By: linhnguy <linhnguy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 17:35:01 by linhnguy          #+#    #+#             */
-/*   Updated: 2024/08/02 23:08:56 by linhnguy         ###   ########.fr       */
+/*   Updated: 2024/08/02 23:32:31 by linhnguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,18 @@
 
 void	PhoneBook::add_contact(std::string first_name, std::string last_name,
 				std::string nickname, std::string phone_num, std::string dark_secret)
-		{
-			if (current_size == 8)
-				current_size = 0;
-			if (current_size < 8)
-			{
-				entries[current_size] = Contacts(first_name,
-				last_name, nickname, phone_num, dark_secret);
-				current_size++;
-				if (max_reached != 8)
-					max_reached++;
-			}
-		}
+{
+	if (current_size == 8)
+		current_size = 0;
+	if (current_size < 8)
+	{
+		entries[current_size] = Contacts(first_name,
+		last_name, nickname, phone_num, dark_secret);
+		current_size++;
+		if (max_reached != 8)
+			max_reached++;
+	}
+}
 
 void PhoneBook::print_contact(int index)
 {
@@ -57,7 +57,7 @@ void	PhoneBook::print_contacts()
 	}
 }
 
-bool	checks(std::string str, std::string &member)
+bool	get_info(std::string str, std::string &member)
 {
 	while (true)
 	{
@@ -82,17 +82,16 @@ int do_add(PhoneBook &phonebook)
 {
     std::string first, last, number, secret, nickname;
 
-	if (!checks("First name", first))
+	if (!get_info("First name", first))
 		return 1;
-	if (!checks("Last name", last))
+	if (!get_info("Last name", last))
 		return 1;
-	if (!checks("Nickname", nickname))
+	if (!get_info("Nickname", nickname))
 		return 1;
-	if (!checks("Phone number", number))
+	if (!get_info("Phone number", number))
 		return 1;
-	if (!checks("Darkest secret", secret))
+	if (!get_info("Darkest secret", secret))
 		return 1;
-    std::cout << std::endl;
     phonebook.add_contact(first, last, nickname, number, secret);
 	return 0;
 }
@@ -117,14 +116,11 @@ int do_search(PhoneBook &phonebook)
 			std::cout << "\nUnkind people don't deserve a phonebook!\n";
 			return 1;
 		}
-		if (!input.empty() && input.length() == 1 && input.find_first_not_of("12345678") == std::string::npos)
+		if (!input.empty() && input.find_first_not_of("12345678") == std::string::npos
+			&& std::stoi(input) <= phonebook.get_max_reached())
 		{
 			i = std::stoi(input);
-			if (i > 0 && i <= phonebook.get_max_reached())
-			{
-				phonebook.print_contact(i - 1);
-			}
-			continue ;
+			phonebook.print_contact(i - 1);
 		}
 		else
 			i = 0;
