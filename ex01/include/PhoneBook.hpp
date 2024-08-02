@@ -6,7 +6,7 @@
 /*   By: linhnguy <linhnguy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 15:31:49 by linhnguy          #+#    #+#             */
-/*   Updated: 2024/08/02 21:21:40 by linhnguy         ###   ########.fr       */
+/*   Updated: 2024/08/02 23:56:51 by linhnguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,8 @@ class PhoneBook
 		int	current_size;
 		int max_reached;
 };
+
+int		do_search(PhoneBook &phonebook);
+int		do_add(PhoneBook &phonebook);
 
 #endif // PhoneBook.CPP
