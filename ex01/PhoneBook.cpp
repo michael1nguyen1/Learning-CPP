@@ -6,16 +6,33 @@
 /*   By: linhnguy <linhnguy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 17:35:01 by linhnguy          #+#    #+#             */
-/*   Updated: 2024/08/01 22:04:34 by linhnguy         ###   ########.fr       */
+/*   Updated: 2024/08/02 23:08:56 by linhnguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/PhoneBook.hpp"
+#include <cstdlib>
+
+void	PhoneBook::add_contact(std::string first_name, std::string last_name,
+				std::string nickname, std::string phone_num, std::string dark_secret)
+		{
+			if (current_size == 8)
+				current_size = 0;
+			if (current_size < 8)
+			{
+				entries[current_size] = Contacts(first_name,
+				last_name, nickname, phone_num, dark_secret);
+				current_size++;
+				if (max_reached != 8)
+					max_reached++;
+			}
+		}
 
 void PhoneBook::print_contact(int index)
 {
 	std::cout << entries[index].get_first_name() << std::endl;
 	std::cout << entries[index].get_last_name() << std::endl;
+	std::cout << entries[index].get_nickname() << std::endl;
 	std::cout << entries[index].get_phone_number() << std::endl;
 	std::cout << entries[index].get_dark_secret() << std::endl;
 }
@@ -35,51 +52,84 @@ void	PhoneBook::print_contacts()
 		std::cout << std::right << std::setw(10) << i + 1 << "|";
 		std::cout << std::right << std::setw(10) << formatEntry(entries[i].get_first_name()) << "|";
 		std::cout << std::right << std::setw(10) << formatEntry(entries[i].get_last_name()) << "|";
-		std::cout << std::right << std::setw(10) << formatEntry(entries[i].get_phone_number()) << "|";
-		std::cout << std::right << std::setw(10) << formatEntry(entries[i].get_dark_secret()) << "|";
+		std::cout << std::right << std::setw(10) << formatEntry(entries[i].get_nickname()) << "|";
 		std::cout << std::endl;
 	}
 }
 
-void do_add(PhoneBook &phonebook)
+bool	checks(std::string str, std::string &member)
 {
-	std::string first, last, number, secret;
-	
-	std::cout << "First name: " << std::endl;
-	std::getline(std::cin, first);
-	std::cout << "Last name: " << std::endl;
-	std::getline(std::cin, last);
-	std::cout << "Phone number: " << std::endl;
-	std::getline(std::cin, number);
-	std::cout << "Dark secret: "<< std::endl;
-	std::getline(std::cin, secret);
-	std::cout << std::endl;
-	
-	phonebook.add_contact(first, last, number, secret);
+	while (true)
+	{
+		std::cout << str << ":" << std::endl;
+		std::getline(std::cin, member);
+		if (std::cin.eof())
+		{
+			std::cout << "\nUnkind people don't deserve a phonebook!\n";
+			return false;
+		}
+		if (member.empty())
+		{
+			std::cout << "There must be a " << str << std::endl;
+			continue;
+		}
+		break;
+	}
+	return true;
 }
 
-void do_search(PhoneBook &phonebook)
+int do_add(PhoneBook &phonebook) 
+{
+    std::string first, last, number, secret, nickname;
+
+	if (!checks("First name", first))
+		return 1;
+	if (!checks("Last name", last))
+		return 1;
+	if (!checks("Nickname", nickname))
+		return 1;
+	if (!checks("Phone number", number))
+		return 1;
+	if (!checks("Darkest secret", secret))
+		return 1;
+    std::cout << std::endl;
+    phonebook.add_contact(first, last, nickname, number, secret);
+	return 0;
+}
+
+int do_search(PhoneBook &phonebook)
 {
 	std::string input;
-	int	i = -1;
+	int	i = 0;
 	
 	phonebook.print_contacts();
 	do
 	{
+		if (phonebook.get_max_reached() == 0)
+		{
+			std::cout << "\nPhonebook is empty\n";
+			return (0);	
+		}
 		std::cout << "Give me index" << std::endl;
 		std::getline(std::cin, input);
-		// if (std::cin.eof())
-		// {
-		// 	std::cout << "You fucked up1!\n";
-		// 	return ;
-		// }
-		if (input.find_first_not_of("12345678") == std::string::npos)
+		if (std::cin.eof())
+		{
+			std::cout << "\nUnkind people don't deserve a phonebook!\n";
+			return 1;
+		}
+		if (!input.empty() && input.length() == 1 && input.find_first_not_of("12345678") == std::string::npos)
 		{
 			i = std::stoi(input);
-			phonebook.print_contact(i);
+			if (i > 0 && i <= phonebook.get_max_reached())
+			{
+				phonebook.print_contact(i - 1);
+			}
+			continue ;
 		}
-		i++;
-	} while (i == -1);
+		else
+			i = 0;
+	} while (i == 0);
+	return 0;
 }
 
 int main()
@@ -91,16 +141,21 @@ int main()
 	{
 		std::cout << "\nGive me a command?\n\n1. ADD\n2. SEARCH\n3. EXIT" << std::endl;
 		std::getline(std::cin, cmd);
-
 		if (std::cin.eof())
 		{
-			std::cout << "You fucked up2!\n";
+			std::cout << "\nUnkind people don't deserve a phonebook!\n";
 			return 0;
 		}
 		else if (cmd == "ADD")
-			do_add(phonebook);
+		{
+			if(do_add(phonebook))
+				return 1;
+		}
 		else if (cmd == "SEARCH")
-			do_search(phonebook);
+		{
+			if (do_search(phonebook))
+				return 1;
+		}
 		else if (cmd == "EXIT")
 			return 0;
 		else

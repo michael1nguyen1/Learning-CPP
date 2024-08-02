@@ -6,7 +6,7 @@
 #    By: linhnguy <linhnguy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/01 21:53:33 by linhnguy          #+#    #+#              #
-#    Updated: 2024/08/01 21:54:53 by linhnguy         ###   ########.fr        #
+#    Updated: 2024/08/02 23:10:30 by linhnguy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ HEADERS	= -I ./include
 
 CC = g++
 CFLAGS = -Wall -Wextra -Werror
-DEBUG_CFLAGS = -g
+DEBUG_CFLAGS = -Wall -Wextra -Werror -g
 SRCS =  PhoneBook.cpp
 OBJS = $(SRCS:.cpp=.o)
 DEBUG_OBJS = $(SRCS:.cpp=.debug.o)
