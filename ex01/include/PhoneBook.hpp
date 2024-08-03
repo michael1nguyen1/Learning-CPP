@@ -6,7 +6,7 @@
 /*   By: linhnguy <linhnguy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 15:31:49 by linhnguy          #+#    #+#             */
-/*   Updated: 2024/08/02 23:56:51 by linhnguy         ###   ########.fr       */
+/*   Updated: 2024/08/03 15:52:58 by linhnguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 #include <string>
 #include <iostream>
 #include <iomanip>
-#include <limits>
 
 class Contacts
 {
