@@ -3,20 +3,20 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: linhnguy <linhnguy@student.42.fr>          +#+  +:+       +#+         #
+#    By: michael <michael@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/01 21:53:33 by linhnguy          #+#    #+#              #
-#    Updated: 2024/08/02 23:57:16 by linhnguy         ###   ########.fr        #
+#    Updated: 2024/08/06 12:13:27 by michael          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = phonebook
 HEADERS	= -I ./include
 
-CC = g++
+CC = c++
 CFLAGS = -Wall -Wextra -Werror
 DEBUG_CFLAGS = -g
-SRCS =  PhoneBook.cpp	actions.cpp		print_utils.cpp
+SRCS =  PhoneBook.cpp	actions.cpp		main.cpp
 OBJS = $(SRCS:.cpp=.o)
 DEBUG_OBJS = $(SRCS:.cpp=.o)
 RM = rm -f

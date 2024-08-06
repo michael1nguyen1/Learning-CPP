@@ -13,7 +13,7 @@
 NAME = megaphone
 HEADERS	= -I ./include
 
-CC = g++
+CC = c++
 CFLAGS = -Wall -Wextra -Werror
 DEBUG_CFLAGS = -g
 SRCS =  megaphone.cpp 

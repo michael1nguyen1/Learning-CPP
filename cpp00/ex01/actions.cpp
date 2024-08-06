@@ -3,29 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   actions.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: linhnguy <linhnguy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: michael <michael@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/02 23:55:14 by linhnguy          #+#    #+#             */
-/*   Updated: 2024/08/02 23:58:55 by linhnguy         ###   ########.fr       */
+/*   Created: 2024/08/06 11:48:19 by michael           #+#    #+#             */
+/*   Updated: 2024/08/06 12:03:35 by michael          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/PhoneBook.hpp"
-
-void	PhoneBook::add_contact(std::string first_name, std::string last_name,
-				std::string nickname, std::string phone_num, std::string dark_secret)
-{
-	if (current_size == 8)
-		current_size = 0;
-	if (current_size < 8)
-	{
-		entries[current_size] = Contacts(first_name,
-		last_name, nickname, phone_num, dark_secret);
-		current_size++;
-		if (max_reached != 8)
-			max_reached++;
-	}
-}
 
 bool	get_info(std::string str, std::string &member)
 {
@@ -43,6 +28,8 @@ bool	get_info(std::string str, std::string &member)
 			std::cout << "There must be a " << str << std::endl;
 			continue;
 		}
+		else if (str == "Phone number" &&
+			member.find_first_not_of("0123456789") != std::string::npos)
 		break;
 	}
 	return true;
