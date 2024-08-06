@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: linhnguy <linhnguy@student.42.fr>          +#+  +:+       +#+         #
+#    By: michael <michael@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/01 21:53:33 by linhnguy          #+#    #+#              #
-#    Updated: 2024/08/03 17:41:58 by linhnguy         ###   ########.fr        #
+#    Updated: 2024/08/06 12:54:57 by michael          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ HEADERS	= -I ./include
 CC = g++
 CFLAGS = -Wall -Wextra -Werror
 DEBUG_CFLAGS = -g
-SRCS =  Zombie.cpp
+SRCS =  Zombie.cpp	main.cpp
 OBJS = $(SRCS:.cpp=.o)
 DEBUG_OBJS = $(SRCS:.cpp=.o)
 RM = rm -f
