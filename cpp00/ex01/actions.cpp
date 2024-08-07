@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   actions.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: michael <michael@student.42.fr>            +#+  +:+       +#+        */
+/*   By: linhnguy <linhnguy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/06 11:48:19 by michael           #+#    #+#             */
-/*   Updated: 2024/08/06 12:03:35 by michael          ###   ########.fr       */
+/*   Created: 2024/08/07 10:53:28 by linhnguy          #+#    #+#             */
+/*   Updated: 2024/08/07 11:07:32 by linhnguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@ bool	get_info(std::string str, std::string &member)
 		}
 		else if (str == "Phone number" &&
 			member.find_first_not_of("0123456789") != std::string::npos)
+		{
+			std::cout << "Phone numbers on earth only have numbers" << std::endl;
+			continue;
+		}
 		break;
 	}
 	return true;

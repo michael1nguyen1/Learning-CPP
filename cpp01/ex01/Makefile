@@ -3,12 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: michael <michael@student.42.fr>            +#+  +:+       +#+         #
+#    By: linhnguy <linhnguy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/08/01 21:53:33 by linhnguy          #+#    #+#              #
-#    Updated: 2024/08/06 16:40:14 by michael          ###   ########.fr        #
+#    Created: 2024/08/07 10:54:11 by linhnguy          #+#    #+#              #
+#    Updated: 2024/08/07 10:54:12 by linhnguy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+
 
 NAME = zombie_horde
 HEADERS	= -I ./include

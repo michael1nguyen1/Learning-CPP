@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: michael <michael@student.42.fr>            +#+  +:+       +#+        */
+/*   By: linhnguy <linhnguy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/02 23:53:57 by linhnguy          #+#    #+#             */
-/*   Updated: 2024/08/06 11:46:20 by michael          ###   ########.fr       */
+/*   Created: 2024/08/07 10:53:39 by linhnguy          #+#    #+#             */
+/*   Updated: 2024/08/07 11:13:05 by linhnguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/PhoneBook.hpp"
+
+PhoneBook::PhoneBook() : current_size(0), max_reached (0) {}
 
 void PhoneBook::print_contact(int index)
 {
@@ -55,3 +57,5 @@ void	PhoneBook::add_contact(std::string first_name, std::string last_name,
 			max_reached++;
 	}
 }
+
+int	PhoneBook::get_max_reached() {return max_reached;}

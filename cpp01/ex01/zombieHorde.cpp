@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   zombieHorde.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: michael <michael@student.42.fr>            +#+  +:+       +#+        */
+/*   By: linhnguy <linhnguy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/06 16:22:05 by michael           #+#    #+#             */
-/*   Updated: 2024/08/06 17:18:54 by michael          ###   ########.fr       */
+/*   Created: 2024/08/07 10:54:14 by linhnguy          #+#    #+#             */
+/*   Updated: 2024/08/07 10:54:15 by linhnguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+
 
 #include "include/Zombie.hpp"
 

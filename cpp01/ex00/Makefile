@@ -3,12 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: michael <michael@student.42.fr>            +#+  +:+       +#+         #
+#    By: linhnguy <linhnguy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/08/01 21:53:33 by linhnguy          #+#    #+#              #
-#    Updated: 2024/08/06 12:54:57 by michael          ###   ########.fr        #
+#    Created: 2024/08/07 10:54:04 by linhnguy          #+#    #+#              #
+#    Updated: 2024/08/07 10:54:05 by linhnguy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+
 
 NAME = zombie
 HEADERS	= -I ./include

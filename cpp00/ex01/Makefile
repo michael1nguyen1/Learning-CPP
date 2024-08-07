@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: michael <michael@student.42.fr>            +#+  +:+       +#+         #
+#    By: linhnguy <linhnguy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/08/01 21:53:33 by linhnguy          #+#    #+#              #
-#    Updated: 2024/08/06 12:13:27 by michael          ###   ########.fr        #
+#    Created: 2024/08/07 10:53:33 by linhnguy          #+#    #+#              #
+#    Updated: 2024/08/07 11:01:05 by linhnguy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ HEADERS	= -I ./include
 CC = c++
 CFLAGS = -Wall -Wextra -Werror
 DEBUG_CFLAGS = -g
-SRCS =  PhoneBook.cpp	actions.cpp		main.cpp
+SRCS =  PhoneBook.cpp	actions.cpp		main.cpp	Contacts.cpp
 OBJS = $(SRCS:.cpp=.o)
 DEBUG_OBJS = $(SRCS:.cpp=.o)
 RM = rm -f

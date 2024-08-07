@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: michael <michael@student.42.fr>            +#+  +:+       +#+        */
+/*   By: linhnguy <linhnguy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/06 12:50:58 by michael           #+#    #+#             */
-/*   Updated: 2024/08/06 12:57:20 by michael          ###   ########.fr       */
+/*   Created: 2024/08/07 10:53:59 by linhnguy          #+#    #+#             */
+/*   Updated: 2024/08/07 10:54:00 by linhnguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+
 
 #include "include/Zombie.hpp"
 
