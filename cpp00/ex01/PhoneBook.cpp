@@ -3,44 +3,55 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: linhnguy <linhnguy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: michael <michael@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/29 17:35:01 by linhnguy          #+#    #+#             */
-/*   Updated: 2024/08/02 23:58:29 by linhnguy         ###   ########.fr       */
+/*   Created: 2024/08/02 23:53:57 by linhnguy          #+#    #+#             */
+/*   Updated: 2024/08/06 11:46:20 by michael          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/PhoneBook.hpp"
 
-int main()
+void PhoneBook::print_contact(int index)
 {
-	PhoneBook phonebook;
-	std::string cmd;
-	
-	do
+	std::cout << entries[index].get_first_name() << std::endl;
+	std::cout << entries[index].get_last_name() << std::endl;
+	std::cout << entries[index].get_nickname() << std::endl;
+	std::cout << entries[index].get_phone_number() << std::endl;
+	std::cout << entries[index].get_dark_secret() << std::endl;
+}
+
+std::string PhoneBook::formatEntry(const std::string entry) 
+{
+	if (entry.length() > 10)
+		return entry.substr(0, 9) + ".";
+	else 
+		return entry;
+}
+
+void	PhoneBook::print_contacts()
+{
+	for (int i = 0; i < max_reached; i++)
 	{
-		std::cout << "\nGive me a command?\n\n1. ADD\n2. SEARCH\n3. EXIT" << std::endl;
-		std::getline(std::cin, cmd);
-		if (std::cin.eof())
-		{
-			std::cout << "\nPhonebook closed!\n";
-			return 1;
-		}
-		else if (cmd == "ADD")
-		{
-			if(do_add(phonebook))
-				return 1;
-		}
-		else if (cmd == "SEARCH")
-		{
-			if (do_search(phonebook))
-				return 1;
-		}
-		else if (cmd == "EXIT")
-			return 0;
-		else
-			std::cout << "You gave a wrong command try again\n";
-	} while (cmd != "EXIT");
-	return 0;
-}	
-	
+		std::cout << std::right << std::setw(10) << i + 1 << "|";
+		std::cout << std::right << std::setw(10) << formatEntry(entries[i].get_first_name()) << "|";
+		std::cout << std::right << std::setw(10) << formatEntry(entries[i].get_last_name()) << "|";
+		std::cout << std::right << std::setw(10) << formatEntry(entries[i].get_nickname()) << "|";
+		std::cout << std::endl;
+	}
+}
+
+void	PhoneBook::add_contact(std::string first_name, std::string last_name,
+				std::string nickname, std::string phone_num, std::string dark_secret)
+{
+	if (current_size == 8)
+		current_size = 0;
+	if (current_size < 8)
+	{
+		entries[current_size] = Contacts(first_name,
+		last_name, nickname, phone_num, dark_secret);
+		current_size++;
+		if (max_reached != 8)
+			max_reached++;
+	}
+}
