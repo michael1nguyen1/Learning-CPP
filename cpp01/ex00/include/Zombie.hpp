@@ -6,7 +6,7 @@
 /*   By: linhnguy <linhnguy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 15:50:13 by linhnguy          #+#    #+#             */
-/*   Updated: 2024/08/03 19:43:46 by linhnguy         ###   ########.fr       */
+/*   Updated: 2024/08/03 19:54:09 by linhnguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ class Zombie
 	~Zombie();
 	
 	void announce(void);
-	
 	std::string get_name() {return name;}
 	
 	private:
