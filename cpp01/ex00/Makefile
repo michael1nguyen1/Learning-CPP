@@ -6,11 +6,9 @@
 #    By: linhnguy <linhnguy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/07 10:54:04 by linhnguy          #+#    #+#              #
-#    Updated: 2024/08/07 10:54:05 by linhnguy         ###   ########.fr        #
+#    Updated: 2024/08/07 11:53:51 by linhnguy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
-
 
 NAME = zombie
 HEADERS	= -I ./include
