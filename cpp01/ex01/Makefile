@@ -6,19 +6,17 @@
 #    By: linhnguy <linhnguy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/07 10:54:11 by linhnguy          #+#    #+#              #
-#    Updated: 2024/08/07 10:54:12 by linhnguy         ###   ########.fr        #
+#    Updated: 2024/08/07 12:08:37 by linhnguy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
-
 
 NAME = zombie_horde
 HEADERS	= -I ./include
 
-CC = g++
+CC = c++
 CFLAGS = -Wall -Wextra -Werror
 DEBUG_CFLAGS = -g
-SRCS =	zombieHorde.cpp
+SRCS =	zombieHorde.cpp		Zombie.cpp
 OBJS = $(SRCS:.cpp=.o)
 DEBUG_OBJS = $(SRCS:.cpp=.o)
 RM = rm -f
