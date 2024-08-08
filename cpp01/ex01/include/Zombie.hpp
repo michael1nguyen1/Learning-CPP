@@ -6,7 +6,7 @@
 /*   By: linhnguy <linhnguy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 12:01:37 by linhnguy          #+#    #+#             */
-/*   Updated: 2024/08/07 12:17:46 by linhnguy         ###   ########.fr       */
+/*   Updated: 2024/08/08 11:35:20 by linhnguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,6 @@ class Zombie
 
     std::string name;
 };
+
+Zombie* zombieHorde(int N, std::string name);
 #endif

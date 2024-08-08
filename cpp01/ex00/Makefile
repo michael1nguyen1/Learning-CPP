@@ -6,45 +6,46 @@
 #    By: linhnguy <linhnguy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/07 10:54:04 by linhnguy          #+#    #+#              #
-#    Updated: 2024/08/08 11:17:48 by linhnguy         ###   ########.fr        #
+#    Updated: 2024/08/08 11:46:18 by linhnguy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = zombie
 HEADERS	= -I ./include
 
-CC = c++
-CFLAGS = -Wall -Wextra -Werror
-DEBUG_CFLAGS = -g
-SRCS =  Zombie.cpp	main.cpp newZombie.cpp	randomChump.cpp
+CXX = c++
+CXXFLAGS = -Wall -Wextra -Werror
+DEBUG_CXXFLAGS = -g
+SRCS = Zombie.cpp main.cpp newZombie.cpp randomChump.cpp
 OBJS = $(SRCS:.cpp=.o)
-DEBUG_OBJS = $(SRCS:.cpp=.o)
+DEBUG_OBJS = $(SRCS:.cpp=.debug.o)
 RM = rm -f
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 	@echo "Program Made"
 
 debug: $(DEBUG_OBJS)
-	$(CC) $(DEBUG_OBJS) $(HEADERS) $(DEBUG_CFLAGS) $(CFLAGS) -o $(NAME)
+	$(CXX) $(DEBUG_OBJS) $(HEADERS) $(DEBUG_CXXFLAGS) $(CXXFLAGS) -o $(NAME)_debug
 	@echo "Debug Program Made"
 
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@ $(HEADERS)
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@ $(HEADERS)
 
-%.debug.o: %.c
-	$(CC) $(CFLAGS) $(DEBUG_CFLAGS) -c $< -o $@ $(HEADERS)
+%.debug.o: %.cpp
+	$(CXX) $(CXXFLAGS) $(DEBUG_CXXFLAGS) -c $< -o $@ $(HEADERS)
 
 clean:
 	$(RM) $(OBJS) $(DEBUG_OBJS)
 	@echo "Cleaned object files"
 
 fclean: clean
-	$(RM) $(NAME)
+	$(RM) $(NAME) $(NAME)_debug
 	@echo "Fully Cleaned"
 
 re: fclean all
 
 .PHONY: all clean fclean re debug
+
