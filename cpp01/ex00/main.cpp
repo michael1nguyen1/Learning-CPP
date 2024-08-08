@@ -6,7 +6,7 @@
 /*   By: linhnguy <linhnguy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 10:53:59 by linhnguy          #+#    #+#             */
-/*   Updated: 2024/08/08 11:27:33 by linhnguy         ###   ########.fr       */
+/*   Updated: 2024/08/08 11:31:02 by linhnguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,17 @@
 
 int main()
 {
-    Zombie *Harry;
+    Zombie *harry;
+	Zombie *foo;
 
-    Harry = newZombie("Harry");
-    Harry->announce();
 	randomChump("RON");
-
-    delete Harry;
+	randomChump("FOO");
+    harry = newZombie("HARRY");
+    harry->announce();
+    delete harry;
+    foo = newZombie("FOO");
+    foo->announce();
+	delete foo;
+	
 	return 0;
 }
