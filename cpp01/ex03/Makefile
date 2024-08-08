@@ -6,17 +6,17 @@
 #    By: linhnguy <linhnguy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/08 17:44:42 by linhnguy          #+#    #+#              #
-#    Updated: 2024/08/08 17:44:45 by linhnguy         ###   ########.fr        #
+#    Updated: 2024/08/08 20:08:16 by linhnguy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = print
+NAME = fight!!
 HEADERS = -I ./include
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror
 DEBUG_CXXFLAGS = -g
-SRCS = main.cpp
+SRCS = main.cpp	HumanA.cpp Weapon.cpp HumanB.cpp
 OBJS = $(SRCS:.cpp=.o)
 DEBUG_OBJS = $(SRCS:.cpp=.debug.o)
 RM = rm -f

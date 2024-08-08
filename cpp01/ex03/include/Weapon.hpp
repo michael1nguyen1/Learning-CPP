@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanA.hpp                                         :+:      :+:    :+:   */
+/*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: linhnguy <linhnguy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/08 17:46:45 by linhnguy          #+#    #+#             */
-/*   Updated: 2024/08/08 19:54:53 by linhnguy         ###   ########.fr       */
+/*   Created: 2024/08/08 17:46:03 by linhnguy          #+#    #+#             */
+/*   Updated: 2024/08/08 19:57:12 by linhnguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HUMANA_H
-#define HUMANA_H
+#ifndef WEAPON_H
+#define WEAPON_H
 
 #include <string>
-#include "Weapon.hpp"
 
-class HumanA
+class Weapon
 {
-	public:
-	HumanA(std::string, Weapon&);
+	public:	
+	Weapon(std::string club);
 	
-	void attack();
+	const std::string&	get_type();
+	void	setType(std::string);
 
 	private:
 
-	std::string name;
-	Weapon &weapon;
+	std::string type;
 };
 
 #endif

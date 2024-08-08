@@ -1,32 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanA.hpp                                         :+:      :+:    :+:   */
+/*   HumanB.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: linhnguy <linhnguy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/08 17:46:45 by linhnguy          #+#    #+#             */
-/*   Updated: 2024/08/08 19:54:53 by linhnguy         ###   ########.fr       */
+/*   Created: 2024/08/08 17:48:43 by linhnguy          #+#    #+#             */
+/*   Updated: 2024/08/08 20:11:05 by linhnguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HUMANA_H
-#define HUMANA_H
+#include "include/HumanB.hpp"
+#include <iostream>
 
-#include <string>
-#include "Weapon.hpp"
-
-class HumanA
+HumanB::HumanB(std::string name)
 {
-	public:
-	HumanA(std::string, Weapon&);
-	
-	void attack();
+	this->name = name;
+	this->weapon = NULL;
+} 
 
-	private:
+void HumanB::attack()
+{
+	if (!weapon)
+	{
+		std::cout << name << " got nothing and ran home crying" << std::endl;
+		return ;
+	}
+	std::cout << name << " attacks with their " << weapon->get_type() << std::endl;
+}
 
-	std::string name;
-	Weapon &weapon;
-};
-
-#endif
+void	HumanB::setWeapon(Weapon &weapon)
+{
+	this->weapon = &weapon;
+}

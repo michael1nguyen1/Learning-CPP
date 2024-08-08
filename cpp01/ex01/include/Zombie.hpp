@@ -6,7 +6,7 @@
 /*   By: linhnguy <linhnguy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 12:01:37 by linhnguy          #+#    #+#             */
-/*   Updated: 2024/08/08 11:35:20 by linhnguy         ###   ########.fr       */
+/*   Updated: 2024/08/08 18:38:07 by linhnguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 #include <string>
 #include <iostream>
-#include <stdexcept>
 
 class Zombie
 {
