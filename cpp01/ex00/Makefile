@@ -6,7 +6,7 @@
 #    By: linhnguy <linhnguy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/07 10:54:04 by linhnguy          #+#    #+#              #
-#    Updated: 2024/08/07 12:08:42 by linhnguy         ###   ########.fr        #
+#    Updated: 2024/08/08 11:17:48 by linhnguy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ HEADERS	= -I ./include
 CC = c++
 CFLAGS = -Wall -Wextra -Werror
 DEBUG_CFLAGS = -g
-SRCS =  Zombie.cpp	main.cpp
+SRCS =  Zombie.cpp	main.cpp newZombie.cpp	randomChump.cpp
 OBJS = $(SRCS:.cpp=.o)
 DEBUG_OBJS = $(SRCS:.cpp=.o)
 RM = rm -f

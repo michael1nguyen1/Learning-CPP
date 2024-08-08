@@ -1,33 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*   randomChump.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: linhnguy <linhnguy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/07 10:54:07 by linhnguy          #+#    #+#             */
-/*   Updated: 2024/08/08 11:25:36 by linhnguy         ###   ########.fr       */
+/*   Created: 2024/08/08 11:16:39 by linhnguy          #+#    #+#             */
+/*   Updated: 2024/08/08 11:26:02 by linhnguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/Zombie.hpp"
 
-Zombie::Zombie (std::string name) : name(name) {}
-
-Zombie::~Zombie()
+void randomChump(std::string name)
 {
-	std::cout << name << " destroyed" << std::endl;
-}
-
-std::string Zombie::get_name()
-{
-	return name;
-}
-
-void Zombie::announce(void)
-{
-	if (this->get_name() == "FOO")
-		std::cout << name << ":BraiiiiiiinnnzzzZ..." << std::endl;
-	else
-		std::cout << '<' << name << '>' << ":BraiiiiiiinnnzzzZ..." << std::endl;
+	Zombie(name).announce();
 }
