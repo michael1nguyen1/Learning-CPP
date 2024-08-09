@@ -5,18 +5,18 @@
 #                                                     +:+ +:+         +:+      #
 #    By: linhnguy <linhnguy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/08/07 10:54:11 by linhnguy          #+#    #+#              #
-#    Updated: 2024/08/09 18:29:53 by linhnguy         ###   ########.fr        #
+#    Created: 2024/08/09 18:12:09 by linhnguy          #+#    #+#              #
+#    Updated: 2024/08/09 18:30:30 by linhnguy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = zombie_horde
+NAME = sed
 HEADERS = -I ./include
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++20
 DEBUG_CXXFLAGS = -g
-SRCS = zombieHorde.cpp Zombie.cpp main.cpp
+SRCS = main.cpp	File.cpp
 OBJS = $(SRCS:.cpp=.o)
 DEBUG_OBJS = $(SRCS:.cpp=.debug.o)
 RM = rm -f
