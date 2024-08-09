@@ -2,3 +2,5 @@ test.cpp
 *.o
 phonebook
 .vscode
+file
+file.replace

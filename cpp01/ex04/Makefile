@@ -6,7 +6,7 @@
 #    By: linhnguy <linhnguy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/08 21:08:39 by linhnguy          #+#    #+#              #
-#    Updated: 2024/08/08 21:29:31 by linhnguy         ###   ########.fr        #
+#    Updated: 2024/08/09 14:32:52 by linhnguy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ HEADERS = -I ./include
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror
 DEBUG_CXXFLAGS = -g
-SRCS = main.cpp
+SRCS = main.cpp	File.cpp
 OBJS = $(SRCS:.cpp=.o)
 DEBUG_OBJS = $(SRCS:.cpp=.debug.o)
 RM = rm -f
