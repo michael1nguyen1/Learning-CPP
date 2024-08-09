@@ -6,7 +6,7 @@
 /*   By: linhnguy <linhnguy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 22:15:59 by linhnguy          #+#    #+#             */
-/*   Updated: 2024/08/09 14:38:56 by linhnguy         ###   ########.fr       */
+/*   Updated: 2024/08/09 16:12:44 by linhnguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 #include <string>
 #include <iostream>
 
-File::File(){}
-
 File::File(std::string &filename, std::ios::openmode mode)
 {
 	file.open(filename, mode);
+	if (!file.is_open())
+		std::cout << "open failed" << std::endl;
 }
 
 File::~File()

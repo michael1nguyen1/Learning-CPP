@@ -6,7 +6,7 @@
 /*   By: linhnguy <linhnguy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 21:54:58 by linhnguy          #+#    #+#             */
-/*   Updated: 2024/08/09 14:31:48 by linhnguy         ###   ########.fr       */
+/*   Updated: 2024/08/09 14:44:01 by linhnguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,4 @@ int main(int argc, char**argv)
 	}
 	else
 		std::cout << "Wrong number of arguments" << std::endl;
-	
 }
