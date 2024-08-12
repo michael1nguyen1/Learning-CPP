@@ -6,7 +6,7 @@
 /*   By: linhnguy <linhnguy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 22:15:59 by linhnguy          #+#    #+#             */
-/*   Updated: 2024/08/09 16:12:44 by linhnguy         ###   ########.fr       */
+/*   Updated: 2024/08/12 16:11:38 by linhnguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ File::File(std::string &filename, std::ios::openmode mode)
 {
 	file.open(filename, mode);
 	if (!file.is_open())
-		std::cout << "open failed" << std::endl;
+		std::cerr << "Error: Could not open " << filename
+		<< " for reading." << std::endl;
 }
 
 File::~File()

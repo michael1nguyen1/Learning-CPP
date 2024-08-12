@@ -6,7 +6,7 @@
 /*   By: linhnguy <linhnguy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 17:46:40 by linhnguy          #+#    #+#             */
-/*   Updated: 2024/08/08 20:06:43 by linhnguy         ###   ########.fr       */
+/*   Updated: 2024/08/12 16:03:20 by linhnguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,10 @@ class HumanB
 {
 	public:
 	HumanB(std::string);
-	
 	void attack();
 	void	setWeapon(Weapon&);
 
 	private:
-
 	std::string name;
 	Weapon *weapon;
 };

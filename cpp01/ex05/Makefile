@@ -6,11 +6,11 @@
 #    By: linhnguy <linhnguy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/09 18:12:09 by linhnguy          #+#    #+#              #
-#    Updated: 2024/08/12 15:08:55 by linhnguy         ###   ########.fr        #
+#    Updated: 2024/08/12 16:14:52 by linhnguy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = sed
+NAME = Harl
 HEADERS = -I ./include
 
 CXX = c++
@@ -25,11 +25,11 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
-	@echo "Program Made"
+	@echo "$(NAME) Program Made"
 
 debug: $(DEBUG_OBJS)
 	$(CXX) $(DEBUG_OBJS) $(HEADERS) $(DEBUG_CXXFLAGS) $(CXXFLAGS) -o $(NAME)_debug
-	@echo "Debug Program Made"
+	@echo "$(NAME) Debug Program Made"
 
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@ $(HEADERS)

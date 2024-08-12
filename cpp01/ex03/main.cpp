@@ -6,7 +6,7 @@
 /*   By: linhnguy <linhnguy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 17:45:43 by linhnguy          #+#    #+#             */
-/*   Updated: 2024/08/08 20:14:55 by linhnguy         ###   ########.fr       */
+/*   Updated: 2024/08/12 16:05:24 by linhnguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,5 @@ int main()
 		club.setType("some other type of club");
 		jim.attack();
 	}
-return 0;
+	return 0;
 }
