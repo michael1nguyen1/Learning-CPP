@@ -6,7 +6,7 @@
 /*   By: linhnguy <linhnguy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 17:28:50 by linhnguy          #+#    #+#             */
-/*   Updated: 2024/08/14 14:46:35 by linhnguy         ###   ########.fr       */
+/*   Updated: 2024/08/14 15:15:22 by linhnguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,14 +76,63 @@ std::ostream& operator<<(std::ostream &out, const Fixed &obj)
 }
 
 bool Fixed::operator>(const Fixed& other) const
-{}
+{
+    return this->fixed_point > other.fixed_point;
+}
+
 bool Fixed::operator<(const Fixed& other) const
-{}
+{
+    return this->fixed_point < other.fixed_point;
+}
+
 bool Fixed::operator>=(const Fixed& other) const
-{}
+{  
+    return this->fixed_point >= other.fixed_point;
+}
+
 bool Fixed::operator<=(const Fixed& other) const
-{}
+{
+    return this->fixed_point <= other.fixed_point;
+}
+
 bool Fixed::operator==(const Fixed& other) const
-{}
+{
+    return this->fixed_point == other.fixed_point;
+}
+
 bool Fixed::operator!=(const Fixed& other) const
-{}
+{
+    return this->fixed_point != other.fixed_point;
+}
+
+Fixed Fixed::operator+(const Fixed& other) const
+{
+    Fixed result;
+    
+    result.fixed_point = this->fixed_point + other.fixed_point;
+    return result;
+}
+
+Fixed Fixed::operator-(const Fixed& other) const
+{
+    Fixed result;
+    
+    result.fixed_point = this->fixed_point - other.fixed_point;
+    return result;
+}
+
+Fixed Fixed::operator*(const Fixed& other) const
+{
+    Fixed result;
+    
+    result.fixed_point = this->fixed_point * other.fixed_point;
+    return result;
+}
+
+Fixed Fixed::operator/(const Fixed& other) const
+{
+    Fixed result;
+    
+    result.fixed_point = this->fixed_point / other.fixed_point;
+    return result;
+}

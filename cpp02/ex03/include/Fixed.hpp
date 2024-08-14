@@ -6,7 +6,7 @@
 /*   By: linhnguy <linhnguy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 17:28:46 by linhnguy          #+#    #+#             */
-/*   Updated: 2024/08/14 14:36:34 by linhnguy         ###   ########.fr       */
+/*   Updated: 2024/08/14 15:13:56 by linhnguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,16 @@ class Fixed
         void setRawBits(int const raw);
         float toFloat(void) const;
         int toInt(void) const;
-        bool operator>(const Fixed& other) const;
-        bool operator<(const Fixed& other) const;
-        bool operator>=(const Fixed& other) const;
-        bool operator<=(const Fixed& other) const;
-        bool operator==(const Fixed& other) const;
-        bool operator!=(const Fixed& other) const;
-        Fixed operator+(const Fixed& other) const;
-        Fixed operator-(const Fixed& other) const;
-        Fixed operator*(const Fixed& other) const;
-        Fixed operator/(const Fixed& other) const;
+        bool operator>(const Fixed&) const;
+        bool operator<(const Fixed&) const;
+        bool operator>=(const Fixed&) const;
+        bool operator<=(const Fixed&) const;
+        bool operator==(const Fixed&) const;
+        bool operator!=(const Fixed&) const;
+        Fixed operator+(const Fixed&) const;
+        Fixed operator-(const Fixed&) const;
+        Fixed operator*(const Fixed&) const;
+        Fixed operator/(const Fixed&) const;
         Fixed& operator++();    // Pre-increment
         Fixed operator++(int);  // Post-increment
         Fixed& operator--();    // Pre-decrement
