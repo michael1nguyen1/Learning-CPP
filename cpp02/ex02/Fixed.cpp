@@ -6,7 +6,7 @@
 /*   By: linhnguy <linhnguy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 17:28:50 by linhnguy          #+#    #+#             */
-/*   Updated: 2024/08/15 15:20:05 by linhnguy         ###   ########.fr       */
+/*   Updated: 2024/08/15 16:50:40 by linhnguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ Fixed Fixed::operator*(const Fixed& other) const
 {
     Fixed result;
     
-    result.fixed_point = this->fixed_point * other.fixed_point >> frac_bits;
+    result.fixed_point = (this->fixed_point * other.fixed_point) >> frac_bits;
     return result;
 }
 
