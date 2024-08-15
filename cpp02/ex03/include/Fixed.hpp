@@ -6,7 +6,7 @@
 /*   By: linhnguy <linhnguy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 17:28:46 by linhnguy          #+#    #+#             */
-/*   Updated: 2024/08/14 15:16:12 by linhnguy         ###   ########.fr       */
+/*   Updated: 2024/08/15 14:25:41 by linhnguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ class Fixed
         Fixed operator++(int);
         Fixed& operator--();
         Fixed operator--(int);
-        static Fixed& min(Fixed& a, Fixed& b);
-        static const Fixed& min(const Fixed& a, const Fixed& b);
-        static Fixed& max(Fixed& a, Fixed& b);
-        static const Fixed& max(const Fixed& a, const Fixed& b);
+        static Fixed& min(Fixed&, Fixed&);
+        static const Fixed& min(const Fixed&, const Fixed&);
+        static Fixed& max(Fixed&, Fixed&);
+        static const Fixed& max(const Fixed&, const Fixed&);
 
     private:
         int fixed_point;
