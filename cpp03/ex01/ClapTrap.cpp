@@ -5,12 +5,12 @@ ClapTrap::ClapTrap()
     std::cout << "Default constuctor called" << std::endl;
 }
 
-ClapTrap::ClapTrap(ClapTrap &other){ *this = other; }
-
 ClapTrap::ClapTrap(std::string name) : name(name), hit_points(10), energy_points (10), attack_damage (0)
 {
     std::cout << "String constuctor called: A wild " << name << " appeared" << std::endl;
 }
+
+ClapTrap::ClapTrap(ClapTrap& other) {*this = other;}
 
 ClapTrap& ClapTrap::operator=(const ClapTrap &other)
 {
