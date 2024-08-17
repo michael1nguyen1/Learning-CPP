@@ -1,29 +1,39 @@
 #include "include/ScavTrap.hpp"
+#include <iostream>
 
-ScavTrap::ScavTrap()
+// Default Constructor
+ScavTrap::ScavTrap() : ClapTrap("Default ScavTrap", 100, 50, 20)
 {
-    std::cout << "Default constuctor called" << std::endl;
+    std::cout << "Default constructor called for ScavTrap" << std::endl;
 }
 
-ScavTrap::ScavTrap(std::string name) : name(name), hit_points(10), energy_points (10), attack_damage (0)
+// Parameterized Constructor
+ScavTrap::ScavTrap(std::string name) : ClapTrap(name, 100, 50, 20)
 {
-    std::cout << "String constuctor called: A wild " << name << " appeared" << std::endl;
+    std::cout << "String constructor called: A wild " << name << " appeared as ScavTrap" << std::endl;
 }
 
-ScavTrap::ScavTrap(ScavTrap& other) {*this = other;}
+// Copy Constructor
+ScavTrap::ScavTrap(const ScavTrap& other) : ClapTrap(other)
+{
+    std::cout << "Copy constructor called for ScavTrap" << std::endl;
+    *this = other; // Calls the assignment operator
+}
 
-ScavTrap& ScavTrap::operator=(const ScavTrap &other)
+// Assignment Operator
+ScavTrap& ScavTrap::operator=(const ScavTrap& other)
 {
     if (this != &other)
     {
-        this->hit_points = other.hit_points;
-        this->energy_points = other.energy_points;
-        this->attack_damage = other.attack_damage;
+        ClapTrap::operator=(other); // Assign base class members
+        // No extra members in ScavTrap to assign, but if there were, they would be assigned here
     }
+    std::cout << "Assignment operator called for ScavTrap" << std::endl;
     return *this;
 }
 
+// Destructor
 ScavTrap::~ScavTrap()
 {
-    std::cout << "Destructor called" << std::endl;
+    std::cout << "Destructor called for ScavTrap" << std::endl;
 }
