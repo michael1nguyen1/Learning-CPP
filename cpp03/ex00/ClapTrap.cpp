@@ -5,7 +5,11 @@ ClapTrap::ClapTrap()
     std::cout << "Default constuctor called" << std::endl;
 }
 
-ClapTrap::ClapTrap(ClapTrap &other){ *this = other; }
+ClapTrap::ClapTrap(ClapTrap &other)
+{ 
+	std::cout << "Copy constructor called" << std::endl;
+	*this = other;
+}
 
 ClapTrap::ClapTrap(std::string name) : name(name), hit_points(10), energy_points (10), attack_damage (0)
 {

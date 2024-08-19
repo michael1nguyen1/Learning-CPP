@@ -18,14 +18,14 @@ class ClapTrap
         int get_hp();
         int get_ep();
         int get_attack();
+		std::string get_name();
         void set_attack(int);
 
-    private:
+    protected:
         std::string name;
         int hit_points;
         int energy_points;
         int attack_damage;
-
 };
 
 #endif
