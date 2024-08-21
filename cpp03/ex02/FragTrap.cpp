@@ -35,7 +35,24 @@ FragTrap::~FragTrap()
     std::cout << "FragTrap: Destructor called for " << name << std::endl;
 }
 
+void FragTrap::attack(const std::string& target)
+{
+    if (this->hit_points == 0)
+	{
+		std::cout << "FragTrap " << this->name << " is dead"<< std::endl;
+		return;
+	}
+	if (this->energy_points == 0)
+	{
+		std::cout << "FragTrap " << this->name << " is useless"<< std::endl;
+		return;
+	}
+	this->energy_points -= 1;
+	std::cout << "FragTrap " << this->name << " attacks " << target << " ";
+	std::cout << this->attack_damage << " Points of damage was done" <<std::endl;
+}
+
 void FragTrap::highFivesGuys()
 {
-    std::cout << name << ": I want a legendariest of high fives!" << std::endl;
+    std::cout << name << "FragTrap: I want a legendariest of high fives!" << std::endl;
 }

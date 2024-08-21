@@ -2,19 +2,19 @@
 
 ClapTrap::ClapTrap()
 {
-    std::cout << "Default constructor called" << std::endl;
+    std::cout << "ClapTrap Default constructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string name) : name(name), hit_points(10), energy_points (10), attack_damage (0)
 {
-    std::cout << "String constructor called for " << name << std::endl;
+    std::cout << "ClapTrap String constructor called for " << name << std::endl;
 }
 
 ClapTrap::ClapTrap(ClapTrap& other) {*this = other;}
 
 ClapTrap& ClapTrap::operator=(const ClapTrap &other)
 {
-	std::cout << "Assignment operator called" << std::endl;
+	std::cout << "ClapTrap Assignment operator called" << std::endl;
     if (this != &other)
     {
         this->hit_points = other.hit_points;
@@ -26,7 +26,7 @@ ClapTrap& ClapTrap::operator=(const ClapTrap &other)
 
 ClapTrap::~ClapTrap()
 {
-    std::cout << "Destructor called for " << name << std::endl;
+    std::cout << "ClapTrap Destructor called for " << name << std::endl;
 }
 
 std::string ClapTrap::get_name(){return name;}

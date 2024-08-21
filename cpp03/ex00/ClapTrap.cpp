@@ -2,18 +2,18 @@
 
 ClapTrap::ClapTrap()
 {
-    std::cout << "Default constuctor called" << std::endl;
+    std::cout << "ClapTrap Default constuctor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(ClapTrap &other)
 { 
-	std::cout << "Copy constructor called" << std::endl;
+	std::cout << "ClapTrap Copy constructor called" << std::endl;
 	*this = other;
 }
 
 ClapTrap::ClapTrap(std::string name) : name(name), hit_points(10), energy_points (10), attack_damage (0)
 {
-    std::cout << "String constuctor called: A wild " << name << " appeared" << std::endl;
+    std::cout << "ClapTrap String constuctor called: A wild " << name << " appeared" << std::endl;
 }
 
 ClapTrap& ClapTrap::operator=(const ClapTrap &other)

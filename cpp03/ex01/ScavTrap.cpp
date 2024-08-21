@@ -35,6 +35,23 @@ ScavTrap::~ScavTrap()
     std::cout << "ScavTrap: Destructor called for " << name << std::endl;
 }
 
+void ScavTrap::attack(const std::string& target)
+{
+    if (this->hit_points == 0)
+	{
+		std::cout << "ScavTrap " << this->name << " is dead"<< std::endl;
+		return;
+	}
+	if (this->energy_points == 0)
+	{
+		std::cout << "ScavTrap " << this->name << " is useless"<< std::endl;
+		return;
+	}
+	this->energy_points -= 1;
+	std::cout << "ScavTrap " << this->name << " attacks " << target << " ";
+	std::cout << this->attack_damage << " Points of damage was done" <<std::endl;
+}
+
 void ScavTrap::guardGate()
 {
     std::cout << "ScavTrap: " << name << " is now a gate guard" << std::endl;

@@ -21,6 +21,7 @@ int main()
 	Hulk = B;
 	print_scav(Hulk);
 	print_scav(A);
+	Hulk.attack("somebody");
 	Hulk.guardGate();
 
     return 0;
