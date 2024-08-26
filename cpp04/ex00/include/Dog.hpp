@@ -12,8 +12,6 @@ class Dog : public Animal
         ~Dog();
 
         void makeSound() const;
-    private:
-    std::string *Brain;
 };
 
 #endif

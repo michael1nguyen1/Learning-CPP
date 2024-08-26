@@ -1,53 +1,46 @@
-#include "include/Animal.hpp"
-#include "include/WrongAnimal.hpp"
 #include "include/Cat.hpp"
 #include "include/Dog.hpp"
-#include "include/WrongCat.hpp"
 
-int main()
+int main() 
 {
-    std::cout << "\nTEST1\n";
-    const Animal* meta = new Animal();
-    const Animal* i = new Cat();
+
+    // /******TEST1*******/
+    std::cout << "Test 1\n" << std::endl;
     const Animal* j = new Dog();
-
-    std::cout << i->getType() << " " << std::endl;
-    std::cout << j->getType() << " " << std::endl;
-    i->makeSound();
-    j->makeSound();
-    meta->makeSound();
-
-    const WrongAnimal* test = new WrongAnimal();
-    const WrongAnimal* c = new WrongCat();
-    std::cout << c->getType() << " " << std::endl;
-    c->makeSound();
-    test->makeSound();
-
-
-    delete meta;
+    const Animal* i = new Cat(); 
+    
     delete i;
     delete j;
-    delete test;
-    delete c;
 
-    std::cout << "\nTEST2\n";
 
-    Animal a1 = Animal();
-    Animal a2(a1);
-    Animal a3 = a2;
-    std::cout << "\ncats\n" << std::endl;
-    Cat c1 = Cat();
-    Cat c2 = Cat(c1);
-    Cat c3 = c2;
-    std::cout << "\n";
+    /******TEST2*******/
+    std::cout << "\nTest 2\n" << std::endl;
+    const int animalCount = 6;
+    Animal* animals[animalCount];
 
-    std::cout << "a1 is: " << a1.getType() << std::endl;
-    std::cout << "a2 is: " << a2.getType() << std::endl;
-    std::cout << "a3 is: " << a3.getType() << std::endl;
-    std::cout << "c1 is: " << c1.getType() << std::endl;
-    std::cout << "c2 is: " << c2.getType() << std::endl;
-    std::cout << "c3 is: " << c3.getType() << std::endl;
+    for (int i = 0; i < animalCount / 2; ++i)
+        animals[i] = new Dog();
+    for (int i = animalCount / 2; i < animalCount; ++i)
+        animals[i] = new Cat();
+    for (int i = 0; i < animalCount; ++i)
+    {
+        std::cout << "animal " << i << std::endl;
+        animals[i]->makeSound();
+    }
+    delete animals[0];
+    animals[0] = new Cat();
+    std::cout << "animal 0" << std::endl;
+    animals[0]->makeSound();
+    for (int i = 0; i < animalCount; ++i)
+        delete animals[i];
 
-    std::cout << "\n";
 
-}
+    /******TEST3*******/
+    std::cout << "\nTest 3\n" << std::endl;
+    Animal *a = new Cat();
+    Animal *b(a);
+    std::cout << "animal b" << std::endl;
+    b->makeSound();
+
+    delete b;
+    }

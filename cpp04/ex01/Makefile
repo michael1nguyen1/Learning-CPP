@@ -1,10 +1,10 @@
-NAME = Polymorphism
+NAME = Fire
 HEADERS = -I ./include
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++20
 DEBUG_CXXFLAGS = -g
-SRCS = main.cpp	Animal.cpp	Cat.cpp	Dog.cpp WrongCat.cpp WrongAnimal.cpp
+SRCS = main.cpp	Animal.cpp	Cat.cpp	Dog.cpp Brain.cpp
 OBJS = $(SRCS:.cpp=.o)
 DEBUG_OBJS = $(SRCS:.cpp=.debug.o)
 RM = rm -f
