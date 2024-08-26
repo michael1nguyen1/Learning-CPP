@@ -12,6 +12,9 @@ class Cat : public Animal
         ~Cat();
 
         void makeSound() const;
+        
+    private:
+        std::string *Brain;
 };
 
 #endif
