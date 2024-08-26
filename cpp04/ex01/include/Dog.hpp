@@ -10,9 +10,9 @@ class Dog : public Animal
         Dog();
         Dog(const Dog&);
         Dog& operator=(const Dog&);
-        ~Dog();
+        ~Dog() override;
 
-        void makeSound() const;
+        void makeSound() const override;
 
     private:
         Brain* brain;

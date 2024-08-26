@@ -9,9 +9,9 @@ class Cat : public Animal
         Cat();
         Cat(const Cat&);
         Cat& operator=(const Cat&);
-        ~Cat();
+        ~Cat() override;
 
-        void makeSound() const;
+        void makeSound() const override;
 };
 
 #endif

@@ -9,7 +9,7 @@ class Dog : public Animal
         Dog();
         Dog(const Dog&);
         Dog& operator=(const Dog&);
-        ~Dog() override;
+        ~Dog();
 
         void makeSound() const override;
 };

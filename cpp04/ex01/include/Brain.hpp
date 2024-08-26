@@ -11,9 +11,6 @@ class Brain
         Brain(const Brain&);
         Brain& operator=(const Brain&);
         ~Brain();
-
-        void setIdea(std::string);
-        void printIdea();
     
     protected:
         std::string idea[100];
