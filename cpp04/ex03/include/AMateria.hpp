@@ -18,7 +18,7 @@ class AMateria
 		virtual void use(ICharacter& target);
 		
 	protected:
-		std::string type;
+		std::string const type;
 };
 
 

@@ -12,4 +12,6 @@ int main()
 
 	arr[0] = new Character(*a);
 	arr[1] = new Character(*b);
+
+
 }

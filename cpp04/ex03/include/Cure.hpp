@@ -11,6 +11,7 @@ class Cure : public AMateria
 		~Cure();
 		Cure& operator=(const Cure&);
 		AMateria* clone() const override;
+		void use(ICharacter& target) override;
 };
 
 #endif
