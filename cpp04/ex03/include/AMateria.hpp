@@ -11,7 +11,7 @@ class AMateria
 		AMateria();
 		AMateria(const AMateria&);
 		~AMateria();
-		AMateria& operator=(const AMateria);
+		AMateria& operator=(const AMateria&);
 
 		std::string const & getType() const;
 		virtual AMateria* clone() const = 0;
@@ -20,7 +20,6 @@ class AMateria
 	protected:
 		std::string type;
 };
-
 
 
 #endif
