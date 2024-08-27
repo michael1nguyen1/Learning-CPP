@@ -1,7 +1,7 @@
 #include "Cure.hpp"
 #include <iostream>
 
-Cure::Cure()
+Cure::Cure() : AMateria("Cure")
 {
 }
 

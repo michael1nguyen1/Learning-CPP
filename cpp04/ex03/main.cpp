@@ -8,8 +8,6 @@ int main()
 
 	Character *arr[24];
 
-	b.equip(something);
-
 	arr[0] = new Character(*a);
 	arr[1] = new Character(*b);
 

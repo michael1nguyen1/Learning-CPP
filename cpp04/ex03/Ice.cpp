@@ -1,7 +1,7 @@
 #include "Ice.hpp"
 #include <iostream>
 
-Ice::Ice()
+Ice::Ice() : AMateria("Ice")
 {
 }
 
