@@ -25,11 +25,11 @@ Character &Character::operator=(const Character &other)
 {
 	if (this != &other)
 	{
+		name = other.name;
 		for (int i = 0; i < 4; i++)
 			delete inventory[i];
 		for (int i = 0; i < 100; i++)
 			delete floor[i];
-		name = other.name;
 		for (int i = 0; i < 4; i++)
 			inventory[i] = (other.inventory[i] ? other.inventory[i]->clone() : nullptr);
 		for (int i = 0; i < 100; i++)
@@ -58,7 +58,6 @@ void Character::equip(AMateria *m)
 		if (!inventory[i])
 		{
 			inventory[i] = m;
-			std::cout << "Equipped " << m->getType() << " at slot " << i << std::endl;
 			return ;
 		}
 	}
@@ -66,7 +65,7 @@ void Character::equip(AMateria *m)
 	{
 		if (!floor[i])
 		{
-			std::cout << "Material thrown on the flooor" << std::endl;
+			std::cout << "Material thrown on the floor" << std::endl;
 			floor[i] = m;
 			return ;
 		}
@@ -76,14 +75,26 @@ void Character::equip(AMateria *m)
 void Character::unequip(int idx)
 {
 	if (idx >= 0 && idx < 4 && inventory[idx])
-		std::cout << "Unequipping " << inventory[idx]->getType() << " from slot "
-		<< idx << std::endl;
+	{
+		for (int i = 0; i < 100; i++)
+		{
+			if (!floor[i])
+			{
+				floor[i] = inventory[idx];
+				std::cout << "Unequiped material thrown on the floor" << std::endl;
+				break;
+			}
+		}
 		inventory[idx] = nullptr;
+	}
+
 }
 
 void Character::use(int idx, ICharacter &target)
 {
-	if (idx >= 0 && idx < 4 && inventory[idx])
+	if (!inventory[idx])
+		std::cout << "No Materia used" << std::endl;
+	else if (idx >= 0 && idx < 4 && inventory[idx])
 		inventory[idx]->use(target);
 }
 
