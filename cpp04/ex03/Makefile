@@ -4,7 +4,8 @@ HEADERS = -I ./include
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++20
 DEBUG_CXXFLAGS = -g
-SRCS =	AMateria.cpp	ICharacter.cpp
+SRCS =	main.cpp	AMateria.cpp	ICharacter.cpp	Character.cpp 	Cure.cpp \
+		Ice.cpp		IMateriaSource.cpp	MateriaSource.cpp
 OBJS = $(SRCS:.cpp=.o)
 DEBUG_OBJS = $(SRCS:.cpp=.debug.o)
 RM = rm -f

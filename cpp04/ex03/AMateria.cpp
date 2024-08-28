@@ -4,17 +4,24 @@ AMateria::AMateria(std::string const &type) : type(type)
 {
 }
 
-AMateria::AMateria()
+AMateria::AMateria() : type("Unknown")
 {
 }
 
-AMateria::AMateria(const AMateria &)
+AMateria::AMateria(const AMateria &other)
+{
+	*this = other;
+}
+
+AMateria::~AMateria()
 {
 }
 
 AMateria &AMateria::operator=(const AMateria& other)
 {
-	// TODO: insert return statement here
+	if (this != &other)
+		this->type = other.type;
+	return *this;
 }
 
 std::string const &AMateria::getType() const

@@ -1,1 +1,5 @@
-#include "include/IMateriaSource.hpp"
+#include "IMateriaSource.hpp"
+
+IMateriaSource::~IMateriaSource()
+{
+}
