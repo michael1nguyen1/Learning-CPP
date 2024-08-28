@@ -45,7 +45,7 @@ void MateriaSource::learnMateria(AMateria *m)
 	{
 		if (!storage[i])
 		{
-			storage[i] = m->clone();
+			storage[i] = m;
 			return;
 		}
 	}
