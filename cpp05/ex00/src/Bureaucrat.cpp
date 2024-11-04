@@ -7,11 +7,11 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : name(name){
 		throw GradeTooLowException();
 }
 
-Bureaucrat::Bureaucrat(Bureaucrat const &old) : name(old.name){
-	if (grade < 1)
-		throw GradeTooHighException();
-	if (grade > 150)
-		throw GradeTooLowException();
+Bureaucrat::Bureaucrat(Bureaucrat const &old) : name(old.name), grade(old.grade) {
+    if (grade < 1)
+        throw GradeTooHighException();
+    if (grade > 150)
+        throw GradeTooLowException();
 }
 
 Bureaucrat& Bureaucrat::operator=(Bureaucrat const &old){
