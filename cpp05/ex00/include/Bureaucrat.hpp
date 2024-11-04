@@ -7,13 +7,15 @@
 
 class Bureaucrat{
 	public:
-		Bureaucrat() = default;
+		Bureaucrat();
 		Bureaucrat(std::string name, int grade);
 		Bureaucrat(const Bureaucrat&);
 		Bureaucrat& operator=(const Bureaucrat&);
 		~Bureaucrat() = default;
-		std::string getName();
-		int getGrade();
+		std::string getName() const;
+		int getGrade() const;
+		void promote();
+		void demote();
 
 		class GradeTooHighException : public std::exception{
 			public:
@@ -25,6 +27,8 @@ class Bureaucrat{
 			const char *what() const noexcept override;
 		};
 		
+		friend std::ostream& operator<<(std::ostream&, const Bureaucrat&);
+
 	private:
 		std::string name;
 		int grade;
