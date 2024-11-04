@@ -10,7 +10,6 @@ class Cat : public Animal
         Cat(const Cat&);
         Cat& operator=(const Cat&);
         ~Cat() override;
-
         void makeSound() const override;
 };
 

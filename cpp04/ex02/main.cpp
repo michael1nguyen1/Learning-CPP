@@ -4,7 +4,6 @@
 int main()
 {
     std::cout << "\nTEST1\n";
-    // const Animal* meta = new Animal();
     const Animal* i = new Cat();
     const Animal* j = new Dog();
 
