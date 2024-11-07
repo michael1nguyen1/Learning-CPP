@@ -11,11 +11,11 @@ class Form{
 		Form(std::string, bool, int, int);
 		Form(const Form&);
 		~Form() = default;
-		Form& operator=(const Form&);
-		std::string getName();
-		bool getSign();
-		int getGrade();
-		int getRequiredGrade();
+		Form& operator=(const Form&) = delete;
+		std::string getName() const;
+		bool getSign() const;
+		int getGradeToSign() const;
+		int getGradeToExec() const;
 		void beSigned(Bureaucrat&);
 		friend std::ostream operator<<(std::ostream&, const Form&);
 
@@ -31,7 +31,7 @@ class Form{
 	private:
 		const std::string name;
 		bool sign;
-		int grade;
-		const int gradeRequired;
+		const int gradeToSign;
+		const int gradeToExec;
 };
 #endif

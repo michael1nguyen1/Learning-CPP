@@ -8,6 +8,7 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : name(name), grade(grade) {
 	if (grade > 150)
 		throw GradeTooLowException();
 }
+
 Bureaucrat::Bureaucrat(Bureaucrat const &old) : name(old.name), grade(old.grade) {}
 
 Bureaucrat& Bureaucrat::operator=(Bureaucrat const &old){
