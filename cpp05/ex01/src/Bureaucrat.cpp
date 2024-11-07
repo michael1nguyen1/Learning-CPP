@@ -8,7 +8,6 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : name(name), grade(grade) {
 	if (grade > 150)
 		throw GradeTooLowException();
 }
-
 Bureaucrat::Bureaucrat(Bureaucrat const &old) : name(old.name), grade(old.grade) {}
 
 Bureaucrat& Bureaucrat::operator=(Bureaucrat const &old){
@@ -51,4 +50,12 @@ void Bureaucrat::demote(){
     if (grade >= 150)
         throw GradeTooLowException();
     ++grade;
+}
+
+void Bureaucrat::signForm(Form& form){
+	if (form.getSign())
+		std::cout << this->getName() << " signed " << form.getName() << std::endl;
+	else
+		std::cout << this->getName() << " couldn't sign " << form.getName()
+		<< " because they are not the right grade." << std::endl;
 }
