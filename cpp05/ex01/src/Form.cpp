@@ -24,11 +24,11 @@ int Form::getGradeToSign()const {
     return this->gradeToSign;
 }
 
-int Form::getGradeToSign()const {
-    return this->gradeToSign;
+int Form::getGradeToExec()const {
+    return this->gradeToExec;
 }
 
-std::ostream& operator<<(std::ostream os, const Form& current){
+std::ostream& operator<<(std::ostream& os, const Form& current){
     os << "Form " << current.getName() << current.getSign() << " it is singed grade required to sign is "
     <<  current.getGradeToSign() << " grade to execute is " << current.getGradeToExec() << std::endl;
     return os;
@@ -41,10 +41,10 @@ void Form::beSigned(Bureaucrat& a){
         throw GradeTooLowException();
 }
 
-const char* Form::GradeTooHigheException::what() const{
+const char* Form::GradeTooHigheException::what() const noexcept{
     return "Grade to sign or execute form is too high";
 }
 
-const char* Form::GradeTooLowException::what() const{
+const char* Form::GradeTooLowException::what() const noexcept{
     return "Grade to sign or execute form is too low";
 }
