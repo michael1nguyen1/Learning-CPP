@@ -4,7 +4,7 @@ HEADERS = -I ./include
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++20
 DEBUG_CXXFLAGS = -g
-SRCS = src/Bureaucrat.cpp src/main.cpp
+SRCS = src/Bureaucrat.cpp src/main.cpp src/Form.cpp
 OBJS = $(SRCS:.cpp=.o)
 DEBUG_OBJS = $(SRCS:.cpp=.debug.o)
 RM = rm -f

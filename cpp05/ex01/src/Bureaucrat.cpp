@@ -52,3 +52,11 @@ void Bureaucrat::demote(){
         throw GradeTooLowException();
     ++grade;
 }
+
+void Bureaucrat::signForm(Form& form){
+	if (form.getSign())
+		std::cout << this->getName() << " signed " << form.getName() << std::endl;
+	else
+		std::cout << this->getName() << " couldn't sign " << form.getName()
+		<< " because they are not the right grade." << std::endl;
+}
