@@ -20,7 +20,7 @@ class Form{
 		int getGradeToExec() const;
 		void beSigned(Bureaucrat&);
 
-		class GradeTooHigheException : public std::exception{
+		class GradeTooHighException : public std::exception{
 			public:
 				const char *what()const noexcept override;
 		};
