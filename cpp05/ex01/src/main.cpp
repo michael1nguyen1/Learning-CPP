@@ -1,6 +1,6 @@
 #include "../include/Bureaucrat.hpp"
 
-// Learned: friend function, returning ostream, exceptions classes
+// Learned: returning ostream, exceptions classes
 int main(){
 
 	Form a;
