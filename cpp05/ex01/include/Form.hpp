@@ -10,7 +10,7 @@ class Bureaucrat;
 class Form{
 	public:
 		Form();
-		Form(std::string, bool, int, int);
+		Form(std::string, int, int);
 		Form(const Form&);
 		~Form() = default;
 		Form& operator=(const Form&) = delete;
@@ -31,7 +31,7 @@ class Form{
 
 	private:
 		const std::string name;
-		bool sign;
+		bool sign = false;
 		const int gradeToSign;
 		const int gradeToExec;
 };

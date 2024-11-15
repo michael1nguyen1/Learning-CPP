@@ -1,10 +1,9 @@
 #include "Form.hpp"
 
+Form::Form() : name("unknown"), gradeToSign(150), gradeToExec(100){}
 
-Form::Form() : name("unknown"), sign(false), gradeToSign(150), gradeToExec(100){}
-
-Form::Form(std::string name, bool sign, int gradeRe, int gradeEx) : name(name), sign(sign), gradeToSign(gradeRe), gradeToExec(gradeEx){
-    if (gradeRe < 1 || gradeEx < 1){
+Form::Form(std::string name, int gradeRe, int gradeEx) : name(name), gradeToSign(gradeRe), gradeToExec(gradeEx){
+	if (gradeRe < 1 || gradeEx < 1){
         throw GradeTooHighException();
 	}
     if (gradeRe > 150 || gradeEx > 150)
@@ -14,24 +13,36 @@ Form::Form(std::string name, bool sign, int gradeRe, int gradeEx) : name(name), 
 Form::Form(Form const &old) : name(old.name), sign(old.sign), gradeToSign(old.gradeToSign), gradeToExec(old.gradeToExec){}
 
 std::string Form::getName()const {
-    return this->name;
+    return name;
 }
 
 bool Form::getSign()const {
-    return this->sign;
+    return sign;
 }
 
 int Form::getGradeToSign()const {
-    return this->gradeToSign;
+    return gradeToSign;
 }
 
 int Form::getGradeToExec()const {
-    return this->gradeToExec;
+    return gradeToExec;
 }
 
 std::ostream& operator<<(std::ostream& os, const Form& current){
-    os << "Form " << current.getName() << " signature is " << current.getSign() << " its grade to Sign is "
-    <<  current.getGradeToSign() << " grade to Execute is " << current.getGradeToExec() << std::endl;
+	std::string	str;
+
+	if (current.getSign())
+	{
+		str = "signed";
+		os << "Form " << current.getName() << " signature is " << str << " its grade to Sign is "
+		<< current.getGradeToSign() << " grade to Execute is " << current.getGradeToExec() << std::endl;
+	}
+	else
+	{
+		str = "unsigned";
+		os << "Form " << current.getName() << " signature is " << str << " its grade to Sign is "
+		<< current.getGradeToSign() << " grade to Execute is " << current.getGradeToExec() << std::endl;
+	}
     return os;
 }
 
