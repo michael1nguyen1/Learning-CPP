@@ -1,6 +1,6 @@
 #include "../include/Bureaucrat.hpp"
 
-// Learned: returning ostream, exception classes
+// Learned: forward declaration in .hpp, returning ostream, exception classes
 int main(){
 
 std::cout << "####Test 1####\n" << std::endl;

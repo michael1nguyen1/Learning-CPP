@@ -12,13 +12,14 @@ class AForm{
 		AForm();
 		AForm(std::string, int, int);
 		AForm(const AForm&);
-		~AForm() = default;
+		virtual ~AForm() = default;
 		AForm& operator=(const AForm&) = delete;
 		std::string getName() const;
 		bool getSign() const;
 		int getGradeToSign() const;
 		int getGradeToExec() const;
 		void beSigned(Bureaucrat&);
+		virtual void execute(Bureaucrat const&) = 0;
 
 		class GradeTooHighException : public std::exception{
 			public:
