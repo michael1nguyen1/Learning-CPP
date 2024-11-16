@@ -1,13 +1,16 @@
 #include "RobotomyRequestForm.hpp"
 #include <random>
 
-RobotomyRequestForm::RobotomyRequestForm() : AForm("RobotomyRequestForm", 145, 137){}
+RobotomyRequestForm::RobotomyRequestForm(const std::string &target) : AForm(target, 72, 45){}
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &other) : AForm(other){}
 
 void RobotomyRequestForm::execute(const Bureaucrat& blah){
-	if (blah.getGrade() > this->getGradeToSign() || !this->getSign())
-		throw GradeTooLowException();
+	
+	if (!getSign())
+		throw GradeTooLowException("Form is not signed");
+	if (blah.getGrade() > this->getGradeToExec())
+		throw GradeTooLowException("Grade is too low and no robot can be made");
 	std::cout << "drill drill\n" << std::endl;
 	std::random_device rd;
 	std::mt19937 gen(rd());

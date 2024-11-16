@@ -2,12 +2,15 @@
 
 AForm::AForm() : name("unknown"), gradeToSign(150), gradeToExec(100){}
 
-AForm::AForm(std::string name, int gradeRe, int gradeEx) : name(name), gradeToSign(gradeRe), gradeToExec(gradeEx){
-	if (gradeRe < 1 || gradeEx < 1){
-        throw GradeTooHighException();
-	}
-    if (gradeRe > 150 || gradeEx > 150)
-        throw GradeTooLowException();
+AForm::AForm(std::string name, int gradeS, int gradeEx) : name(name), gradeToSign(gradeS), gradeToExec(gradeEx){
+	if (gradeS < 1)
+        throw GradeTooHighException("Grade to sign can't be 0 or negative");
+	if (gradeEx < 1)
+		throw GradeTooHighException("Grade to execute can't be 0 or negative");
+	if (gradeS > 150)
+    	throw GradeTooLowException("Grade to sign can't be more than 150");
+	if (gradeEx > 150)
+		throw GradeTooLowException("Grade to execute can't be more than 150");
 }
 
 AForm::AForm(AForm const &old) : name(old.name), sign(old.sign), gradeToSign(old.gradeToSign), gradeToExec(old.gradeToExec){}
@@ -50,13 +53,13 @@ void AForm::beSigned(Bureaucrat& a){
     if (a.getGrade() <= this->getGradeToSign())
         this->sign = true;
     else
-        throw GradeTooLowException();
+        throw GradeTooLowException("Your grade is too low to sign this form!");
 }
 
 const char* AForm::GradeTooHighException::what() const noexcept{
-    return "Grade to sign or execute form is too high";
+    return message.c_str();
 }
 
 const char* AForm::GradeTooLowException::what() const noexcept{
-    return "Grade to sign or execute form is too low";
+    return message.c_str();
 }

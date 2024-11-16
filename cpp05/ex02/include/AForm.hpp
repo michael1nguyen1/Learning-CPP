@@ -23,11 +23,17 @@ class AForm{
 
 		class GradeTooHighException : public std::exception{
 			public:
+				explicit GradeTooHighException(std::string str) : message(str){}
 				const char *what()const noexcept override;
+			private:
+				std::string message;
 		};
 		class GradeTooLowException : public std::exception{
 			public:
+				explicit GradeTooLowException(std::string str) : message(str){}
 				const char *what()const noexcept override;
+			private:
+				std::string message;
 		};
 
 	private:

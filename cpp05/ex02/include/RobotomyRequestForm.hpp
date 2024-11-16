@@ -5,7 +5,8 @@
 
 class RobotomyRequestForm : public AForm{
 	public:
-		RobotomyRequestForm();
+		RobotomyRequestForm() = delete;
+		RobotomyRequestForm(const std::string&);
 		RobotomyRequestForm(const RobotomyRequestForm&);
 		RobotomyRequestForm& operator=(const RobotomyRequestForm&) = delete;
 		~RobotomyRequestForm() override = default;
