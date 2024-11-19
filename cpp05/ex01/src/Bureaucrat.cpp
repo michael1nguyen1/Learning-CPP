@@ -55,7 +55,7 @@ void Bureaucrat::demote(){
 
 void Bureaucrat::signForm(Form& form){
 	if (!form.getSign()){
-		form.beSigned();
+		form.beSigned(*this);
 		std::cout << this->getName() << " signed " << form.getName() << std::endl;
 	}
 	else

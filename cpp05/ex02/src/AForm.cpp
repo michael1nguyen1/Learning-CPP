@@ -1,8 +1,8 @@
 #include "AForm.hpp"
 
-AForm::AForm() : name("unknown"), gradeToSign(150), gradeToExec(100){}
+AForm::AForm() : name("unknown"), target("unknown"), gradeToSign(150), gradeToExec(100){}
 
-AForm::AForm(std::string name, int gradeS, int gradeEx) : name(name), gradeToSign(gradeS), gradeToExec(gradeEx){
+AForm::AForm(std::string name, std::string target, int gradeS, int gradeEx) : name(name), target(target), gradeToSign(gradeS), gradeToExec(gradeEx){
 	if (gradeS < 1)
         throw GradeTooHighException("Grade to sign can't be 0 or negative");
 	if (gradeEx < 1)
@@ -13,7 +13,7 @@ AForm::AForm(std::string name, int gradeS, int gradeEx) : name(name), gradeToSig
 		throw GradeTooLowException("Grade to execute can't be more than 150");
 }
 
-AForm::AForm(AForm const &old) : name(old.name), sign(old.sign), gradeToSign(old.gradeToSign), gradeToExec(old.gradeToExec){}
+AForm::AForm(AForm const &old) : name(old.name), target(old.target), sign(old.sign), gradeToSign(old.gradeToSign), gradeToExec(old.gradeToExec){}
 
 std::string AForm::getName()const {
     return name;
@@ -31,19 +31,23 @@ int AForm::getGradeToExec()const {
     return gradeToExec;
 }
 
+std::string AForm::getTarget() const{
+	return target;
+}
+
 std::ostream& operator<<(std::ostream& os, const AForm& current){
 	std::string	str;
 
 	if (current.getSign())
 	{
 		str = "signed";
-		os << "Form " << current.getName() << " signature is " << str << " its grade to Sign is "
+		os << "Form " << current.getName() << " with target " << current.getTarget() << " signature is " << str << " its grade to Sign is "
 		<< current.getGradeToSign() << " grade to Execute is " << current.getGradeToExec() << std::endl;
 	}
 	else
 	{
 		str = "unsigned";
-		os << "Form " << current.getName() << " signature is " << str << " its grade to Sign is "
+		os << "Form " << current.getName() << " with target " << current.getTarget() << " signature is " << str << " its grade to Sign is "
 		<< current.getGradeToSign() << " grade to Execute is " << current.getGradeToExec() << std::endl;
 	}
     return os;

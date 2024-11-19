@@ -1,17 +1,17 @@
 #include "RobotomyRequestForm.hpp"
 #include <random>
 
-RobotomyRequestForm::RobotomyRequestForm(const std::string &target) : AForm(target, 72, 45){}
+RobotomyRequestForm::RobotomyRequestForm(const std::string &target) : AForm("RobotForm", target, 72, 45){}
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &other) : AForm(other){}
 
-void RobotomyRequestForm::execute(const Bureaucrat& blah){
+void RobotomyRequestForm::execute(const Bureaucrat& a){
 	
 	if (!getSign())
 		throw GradeTooLowException("Form is not signed");
-	if (blah.getGrade() > this->getGradeToExec())
+	if (a.getGrade() > this->getGradeToExec())
 		throw GradeTooLowException("Grade is too low and no robot can be made");
-	std::cout << "drill drill\n" << std::endl;
+	std::cout << "\nDrill Drill\n" << std::endl;
 	std::random_device rd;
 	std::mt19937 gen(rd());
 	std::uniform_int_distribution<> dis(1, 100);
@@ -20,5 +20,5 @@ void RobotomyRequestForm::execute(const Bureaucrat& blah){
 	if(chance)
 		std::cout << "successfully turned into a robot" << std::endl;
 	else
-		std::cout << "failed sorry" << std::endl;
+		std::cout << "failed good luck with your pathetic human life" << std::endl;
 }

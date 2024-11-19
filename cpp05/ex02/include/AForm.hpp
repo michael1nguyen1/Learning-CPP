@@ -10,7 +10,7 @@ class Bureaucrat;
 class AForm{
 	public:
 		AForm();
-		AForm(std::string, int, int);
+		AForm(std::string, std::string, int, int);
 		AForm(const AForm&);
 		virtual ~AForm() = default;
 		AForm& operator=(const AForm&) = delete;
@@ -18,6 +18,7 @@ class AForm{
 		bool getSign() const;
 		int getGradeToSign() const;
 		int getGradeToExec() const;
+		std::string getTarget() const;
 		void beSigned(Bureaucrat&);
 		virtual void execute(Bureaucrat const&) = 0;
 
@@ -38,6 +39,7 @@ class AForm{
 
 	private:
 		const std::string name;
+		const std::string target;
 		bool sign = false;
 		const int gradeToSign;
 		const int gradeToExec;

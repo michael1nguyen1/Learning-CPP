@@ -5,7 +5,7 @@ CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++20
 DEBUG_CXXFLAGS = -g
 SRCS = 	src/Bureaucrat.cpp src/main.cpp src/AForm.cpp src/RobotomyRequestForm.cpp \
-		src/ShrubberyCreationForm.cpp
+		src/ShrubberyCreationForm.cpp src/PresidentialPardonForm.cpp
 OBJS = $(SRCS:.cpp=.o)
 DEBUG_OBJS = $(SRCS:.cpp=.debug.o)
 RM = rm -f
