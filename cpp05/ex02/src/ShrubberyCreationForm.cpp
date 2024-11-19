@@ -16,5 +16,9 @@ void ShrubberyCreationForm::execute(const Bureaucrat &bob){
 		return ;
 	}
 	file << "  *  \n *** \n*****\n  *" <<std::endl;
-	std::cout << "\nShrubForm executed file created" << std::endl;
+	if (file.fail())
+		std::cerr << "Error writing to the file!" << std::endl;
+	else {
+    	std::cout << "\nShrubForm executed file created" << std::endl;
+}
 }

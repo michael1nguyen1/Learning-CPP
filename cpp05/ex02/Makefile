@@ -31,7 +31,7 @@ clean:
 	@echo "Cleaned object files"
 
 fclean: clean
-	$(RM) $(NAME) $(NAME)_debug
+	$(RM) $(NAME) $(NAME)_debug *_shrubbery
 	@echo "Fully Cleaned"
 
 re: fclean all

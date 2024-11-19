@@ -13,5 +13,4 @@ class PresidentialPardonForm : public AForm{
 		void execute(const Bureaucrat&);
 };
 
-
 #endif

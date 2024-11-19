@@ -29,21 +29,11 @@ int Form::getGradeToExec()const {
 }
 
 std::ostream& operator<<(std::ostream& os, const Form& current){
-	std::string	str;
-
-	if (current.getSign())
-	{
-		str = "signed";
-		os << "Form " << current.getName() << " signature is " << str << " its grade to Sign is "
-		<< current.getGradeToSign() << " grade to Execute is " << current.getGradeToExec() << std::endl;
-	}
-	else
-	{
-		str = "unsigned";
-		os << "Form " << current.getName() << " signature is " << str << " its grade to Sign is "
-		<< current.getGradeToSign() << " grade to Execute is " << current.getGradeToExec() << std::endl;
-	}
-    return os;
+	os << "Form " << current.getName()
+		<< " is " << (current.getSign() ? "signed" : "unsigned")
+		<< ", grade to sign: " << current.getGradeToSign()
+		<< ", grade to execute: " << current.getGradeToExec() << std::endl;
+	return os;
 }
 
 void Form::beSigned(Bureaucrat& a){

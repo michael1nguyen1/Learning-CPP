@@ -54,11 +54,13 @@ void Bureaucrat::demote(){
 }
 
 void Bureaucrat::signForm(AForm& form){
-	if (!form.getSign()){
-		std::cout << this->getName() << " signed " << form.getName() << " for target " << form.getTarget() << std::endl;
-		form.beSigned(*this);
-	}
-	else
-		std::cout << this->getName() << " couldn't sign " << form.getName()
-		<< " because they are not the right grade." << std::endl;
+	if (!form.getSign()) {
+    form.beSigned(*this);
+    std::cout << this->getName() << " signed " << form.getName() << std::endl;
+}
+	else {
+    std::cout << this->getName() << " couldn't sign " << form.getName()
+              << " because the form is already signed." << std::endl;
+}
+
 }

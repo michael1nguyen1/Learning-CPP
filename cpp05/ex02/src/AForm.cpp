@@ -36,20 +36,12 @@ std::string AForm::getTarget() const{
 }
 
 std::ostream& operator<<(std::ostream& os, const AForm& current){
-	std::string	str;
+	os << "Form " << current.getName() << " with target " << current.getTarget()
+		<< " is " << (current.getSign() ? "signed" : "unsigned")
+		<< ", grade to sign: " << current.getGradeToSign()
+		<< ", grade to execute: " << current.getGradeToExec() << std::endl;
+return os;
 
-	if (current.getSign())
-	{
-		str = "signed";
-		os << "Form " << current.getName() << " with target " << current.getTarget() << " signature is " << str << " its grade to Sign is "
-		<< current.getGradeToSign() << " grade to Execute is " << current.getGradeToExec() << std::endl;
-	}
-	else
-	{
-		str = "unsigned";
-		os << "Form " << current.getName() << " with target " << current.getTarget() << " signature is " << str << " its grade to Sign is "
-		<< current.getGradeToSign() << " grade to Execute is " << current.getGradeToExec() << std::endl;
-	}
     return os;
 }
 
