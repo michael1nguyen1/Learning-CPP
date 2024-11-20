@@ -13,7 +13,7 @@ class Bureaucrat{
 		Bureaucrat();
 		Bureaucrat(std::string name, int grade);
 		Bureaucrat(const Bureaucrat&);
-		Bureaucrat& operator=(const Bureaucrat&);
+		Bureaucrat& operator=(const Bureaucrat&) = delete;
 		~Bureaucrat() = default;
 		std::string getName() const;
 		int getGrade() const;
