@@ -10,7 +10,7 @@ class PresidentialPardonForm : public AForm{
 		PresidentialPardonForm(const PresidentialPardonForm&);
 		PresidentialPardonForm& operator=(const PresidentialPardonForm&) = delete; 
 		~PresidentialPardonForm() = default;
-		void execute(const Bureaucrat&);
+		void execute(const Bureaucrat&) const override;
 };
 
 #endif

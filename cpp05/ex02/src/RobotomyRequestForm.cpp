@@ -5,7 +5,7 @@ RobotomyRequestForm::RobotomyRequestForm(const std::string &target) : AForm("Rob
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &other) : AForm(other){}
 
-void RobotomyRequestForm::execute(const Bureaucrat& a){
+void RobotomyRequestForm::execute(const Bureaucrat& a) const {
 	
 	if (!getSign())
 		throw GradeTooLowException("Form is not signed");
@@ -14,7 +14,7 @@ void RobotomyRequestForm::execute(const Bureaucrat& a){
 	std::cout << "\nDrill Drill\n" << std::endl;
 	std::random_device rd;
 	std::mt19937 gen(rd());
-	std::uniform_int_distribution<> dis(1, 100);
+	std::uniform_int_distribution<> dis(1, 2);
 
 	int chance = dis(gen) % 2;
 	if(chance)

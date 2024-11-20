@@ -5,7 +5,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target) : AForm(
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other) : AForm(other){}
 
-void ShrubberyCreationForm::execute(const Bureaucrat &bob){
+void ShrubberyCreationForm::execute(const Bureaucrat &bob) const {
 	if (!getSign())
 		throw GradeTooLowException("Form is not signed");
 	if (bob.getGrade() > this->getGradeToExec())

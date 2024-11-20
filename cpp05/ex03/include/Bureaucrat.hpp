@@ -31,7 +31,7 @@ class Bureaucrat{
 			const char *what() const noexcept override;
 		};
 	private:
-		std::string name;
+		const std::string name;
 		int grade;
 };
 

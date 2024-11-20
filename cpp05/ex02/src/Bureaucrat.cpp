@@ -11,15 +11,6 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : name(name), grade(grade) {
 
 Bureaucrat::Bureaucrat(Bureaucrat const &old) : name(old.name), grade(old.grade) {}
 
-Bureaucrat& Bureaucrat::operator=(Bureaucrat const &old){
-	if (this != &old)
-	{
-        this->name = old.name;
-		this->grade = old.grade;
-	}
-    return *this;
-}
-
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& current){
 	os << current.getName() << " bureaucrat grade is " << current.getGrade() << std::endl;
 	return os;
@@ -55,12 +46,17 @@ void Bureaucrat::demote(){
 
 void Bureaucrat::signForm(AForm& form){
 	if (!form.getSign()) {
-    form.beSigned(*this);
-    std::cout << this->getName() << " signed " << form.getName() << std::endl;
-}
-	else {
-    std::cout << this->getName() << " couldn't sign " << form.getName()
-              << " because the form is already signed." << std::endl;
+    	form.beSigned(*this);
+    	std::cout << this->getName() << " signed " << form.getName() << std::endl;
+	}
+		else {
+		std::cout << this->getName() << " couldn't sign " << form.getName()
+				<< " it is already signed." << std::endl;
+	}
+
 }
 
+void Bureaucrat::executeForm(AForm const &form){
+	form.execute(*this);
+	std::cout << getName() << " execute " << form.getName() << std::endl;
 }

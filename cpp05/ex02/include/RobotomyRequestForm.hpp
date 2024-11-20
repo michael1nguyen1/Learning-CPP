@@ -10,6 +10,6 @@ class RobotomyRequestForm : public AForm{
 		RobotomyRequestForm(const RobotomyRequestForm&);
 		RobotomyRequestForm& operator=(const RobotomyRequestForm&) = delete;
 		~RobotomyRequestForm() override = default;
-		void execute(const Bureaucrat&) override;
+		void execute(const Bureaucrat&) const override;
 };
 #endif

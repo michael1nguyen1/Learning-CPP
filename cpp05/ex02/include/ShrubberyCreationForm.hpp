@@ -10,7 +10,7 @@ class ShrubberyCreationForm : public AForm{
 		ShrubberyCreationForm(const ShrubberyCreationForm&);
 		ShrubberyCreationForm& operator=(const ShrubberyCreationForm&) = delete;
 		~ShrubberyCreationForm() override = default;
-		void execute(const Bureaucrat&) override;
+		void execute(const Bureaucrat&) const override;
 };
 
 #endif

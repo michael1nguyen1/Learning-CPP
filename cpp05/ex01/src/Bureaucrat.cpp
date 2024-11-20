@@ -11,15 +11,6 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : name(name), grade(grade) {
 
 Bureaucrat::Bureaucrat(Bureaucrat const &old) : name(old.name), grade(old.grade) {}
 
-Bureaucrat& Bureaucrat::operator=(Bureaucrat const &old){
-	if (this != &old)
-	{
-        this->name = old.name;
-		this->grade = old.grade;
-	}
-    return *this;
-}
-
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& current){
 	os << current.getName() << " bureaucrat grade is " << current.getGrade() << std::endl;
 	return os;
@@ -60,5 +51,5 @@ void Bureaucrat::signForm(Form& form){
 	}
 	else
 		std::cout << this->getName() << " couldn't sign " << form.getName()
-		<< " because they are not the right grade." << std::endl;
+		<< " it is already signed." << std::endl;
 }

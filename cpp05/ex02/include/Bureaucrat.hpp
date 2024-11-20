@@ -13,13 +13,14 @@ class Bureaucrat{
 		Bureaucrat();
 		Bureaucrat(std::string name, int grade);
 		Bureaucrat(const Bureaucrat&);
-		Bureaucrat& operator=(const Bureaucrat&);
+		Bureaucrat& operator=(const Bureaucrat&) = delete;
 		~Bureaucrat() = default;
 		std::string getName() const;
 		int getGrade() const;
 		void promote();
 		void demote();
 		void signForm(AForm&);
+		void executeForm(AForm const &);
 
 		class GradeTooHighException : public std::exception{
 			public:
@@ -31,7 +32,7 @@ class Bureaucrat{
 			const char *what() const noexcept override;
 		};
 	private:
-		std::string name;
+		const std::string name;
 		int grade;
 };
 

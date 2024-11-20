@@ -3,7 +3,7 @@
 #include "ShrubberyCreationForm.hpp"
 #include "PresidentialPardonForm.hpp"
 
-//fix target 
+//Learned true random, custom exceptions
 int main(){
 	Bureaucrat bob("bob", 1);
 	RobotomyRequestForm a("karen");
@@ -12,7 +12,7 @@ int main(){
 
 	try{
 		bob.signForm(a);
-		a.execute(bob);
+		bob.executeForm(a);
 		std::cout << std::endl;
 	}
 	catch (const RobotomyRequestForm::GradeTooLowException& e){
@@ -21,7 +21,7 @@ int main(){
 
 	try{
 		bob.signForm(b);
-		b.execute(bob);
+		bob.executeForm(b);
 		std::cout << std::endl;
 
 	}
@@ -31,7 +31,7 @@ int main(){
 	
 	try{
 		bob.signForm(c);
-		c.execute(bob);
+		bob.executeForm(c);
 
 	}
 	catch (const PresidentialPardonForm::GradeTooLowException& e){

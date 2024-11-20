@@ -4,7 +4,7 @@ PresidentialPardonForm::PresidentialPardonForm(const std::string &target) : AFor
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &other) : AForm(other) {}
 
-void PresidentialPardonForm::execute(const Bureaucrat &a){
+void PresidentialPardonForm::execute(const Bureaucrat &a) const{
 	if (!getSign())
 		throw GradeTooLowException("Form is not signed");
 	if (a.getGrade() > this->getGradeToExec())

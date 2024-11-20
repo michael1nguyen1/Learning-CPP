@@ -60,7 +60,7 @@ void Bureaucrat::signForm(AForm& form){
 }
 	else {
     std::cout << this->getName() << " couldn't sign " << form.getName()
-              << " because the form is already signed." << std::endl;
+              << " it is already signed." << std::endl;
 }
 
 }
