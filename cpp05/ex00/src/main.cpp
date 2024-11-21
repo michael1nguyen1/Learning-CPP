@@ -1,6 +1,5 @@
 #include "../include/Bureaucrat.hpp"
 
-
 // Learned: returning ostream, exceptions classes
 int main(){
 

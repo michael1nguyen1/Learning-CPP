@@ -4,7 +4,7 @@
 #include "PresidentialPardonForm.hpp"
 #include "Intern.hpp"
 
-//fix target 
+//learned lamda functions
 int main(){
 	Intern someRandomIntern;
 	AForm* rrf;

@@ -10,7 +10,7 @@ Intern& Intern::operator=(const Intern &other){
 
 AForm* Intern::makeForm(const std::string &formName, const std::string &formTarget) {
 	std::string formNames[] = {"shrubbery request", "robotomy request", "presidential pardon"};
-  	AForm* (*createFunctions[])(const std::string&) = {
+  	AForm* (*pickForm[])(const std::string&) = {
     [](const std::string& target) -> AForm* { return new ShrubberyCreationForm(target); },
     [](const std::string& target) -> AForm* { return new RobotomyRequestForm(target); },
     [](const std::string& target) -> AForm* { return new PresidentialPardonForm(target); }
@@ -19,9 +19,9 @@ AForm* Intern::makeForm(const std::string &formName, const std::string &formTarg
         if (formName == formNames[i]){
 			std::cout << "Intern created " << formName << " for target " << formTarget
 					  << std::endl;
-			return createFunctions[i](formTarget);
+			return pickForm[i](formTarget);
 		}
     }
-	std::cout << "Error such form can be created" << std::endl;
+	std::cout << "Error such form can't be created" << std::endl;
     return nullptr;
 }
