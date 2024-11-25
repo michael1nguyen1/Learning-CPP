@@ -3,7 +3,6 @@
 
 #include <string>
 #include <iostream>
-#include <cctype>
 #include <stdexcept>
 
 class ScalarConverter{
@@ -14,7 +13,11 @@ class ScalarConverter{
 		ScalarConverter& operator=(const ScalarConverter&) = delete;
 		~ScalarConverter() = delete;
 		static void convert(const std::string&);
-
 };
+
+template<typename T>
+void printValue(T value);
+template<typename T>
+T getValue(std::string);
 
 #endif
