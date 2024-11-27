@@ -4,7 +4,6 @@
 
 template<typename T>
 void printValue(T value){
-	// std::cout<<value<<std::endl;
 		if  ((value < 32 && value > -1) || (value == 127))
 				std::cout << "char: Non displayable" <<std::endl;
 		else if(value < 0 || value > 127 || value != value)
