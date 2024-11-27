@@ -1,62 +1,42 @@
 #include "ScalarConverter.hpp"
 #include "ScalarConverter.tpp"
 
-// void printChar(const std::string &literal){
-// 	if (literal.length() == 1 && std::isprint(literal[0])){
-// 		std::cout << "1char: '" << literal[0] << "'" << std::endl;
-// 		return;
-// 	}
-// 	try{
-// 		int num = std::stoi(literal);
-// 		std::cout << "num is " << num << std::endl;
-// 		if (num >= 32 && num <= 127)
-// 			std::cout << "2char: '" << static_cast<char>(num) << "'" << std::endl;
-// 		else
-// 			std::cout <<  "3char: Non displayable" << std::endl;
-// 	}
-// 	catch (const std::invalid_argument&){
-// 		std::cout <<  "4char: impossible" << std::endl;
-// 	}
-// 	catch (const std::out_of_range){
-// 		std::cout <<  "5char: impossible" << std::endl;
-// 	}
-// }
+bool isNumber(const std::string& str){
+	return str.find_first_not_of("-+0123456789") == std::string::npos;
+}
 
-// void printInt(const std::string& literal){
-// 	if (literal.length() == 1 && std::isprint(literal[0])){
-// 		std::cout << "0int: '" << static_cast<int>(literal[0]) << "'" << std::endl;
-// 		return;
-// 	}
-// 	try{
-// 		int num = std::stoi(literal);
-// 		std::cout << "1int : " << num << std::endl;
-// 	}
-// 	catch (const std::invalid_argument&){
-// 		std::cout <<  "2int: impossible" << std::endl;
-// 	}
-// 	catch (const std::out_of_range){
-// 		std::cout <<  "3int: impossible" << std::endl;
-// 	}
-// }
-
-bool validateLiteral(const std::string &literal){
-	if(literal.length() == 2)
+bool isFloat(const std::string& str){
+	if (str == "nanf" || str == "-inff" || str == "inff")
 		return true;
-	return true;
+	return str.find_first_not_of("-+0123456789.f") == std::string::npos && str[str.length() - 1] == 'f';
+}
+
+bool isDouble(const std::string& str){
+	if (str == "nan" || str == "-inf" || str == "inf")
+		return true;
+	return str.find_first_not_of("-+0123456789.") == std::string::npos;
 }
 
 void ScalarConverter::convert(const std::string& literal){
-// 	auto value;
-// 	if (validateLiteral(literal)){
-// 		value = getValue<std::string>(literal);
-// 	}
-// }
-
-try {
-
-		auto value = getValue<std::string>(literal);
-		std::cout << "Converted value: " << value << std::endl;
-	} catch (const std::exception& e) {
-		std::cout << "Error: " << e.what() << std::endl;
-	}
+		if (literal.length() == 1 && (literal[0] > '9' || literal[0] < '0'))
+			return printValue<char>(literal[0]);
+		if (isNumber(literal)){
+			try{
+				return printValue<int>(std::stoi(literal));
+			}
+			catch (const std::out_of_range){}
+		}
+		if (isFloat(literal)){
+			try{
+				return printValue<float>(std::stof(literal));
+			}
+			catch (const std::out_of_range){}
+		}
+		if (isDouble(literal)){
+			try{
+				return printValue<double>(std::stod(literal));
+			}
+			catch (const std::out_of_range){}
+		}
+	std::cout << "invalid input" << std::endl;
 }

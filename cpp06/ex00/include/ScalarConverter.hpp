@@ -4,6 +4,9 @@
 #include <string>
 #include <iostream>
 #include <stdexcept>
+#include <iomanip> 
+#include <limits>
+#include <cmath>
 
 class ScalarConverter{
 	
@@ -17,7 +20,5 @@ class ScalarConverter{
 
 template<typename T>
 void printValue(T value);
-template<typename T>
-T getValue(std::string);
 
 #endif
