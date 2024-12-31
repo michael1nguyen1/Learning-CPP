@@ -3,9 +3,9 @@ HEADERS = -I ./include
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++20
-SRCS = src/Serializater.cpp src/main.cpp
-OBJS = $(SRC:cpp=.o)
-RM = rm-rf
+SRCS = src/Serializer.cpp src/main.cpp
+OBJS = $(SRCS:.cpp=.o)
+RM = rm -rf
 
 all: $(NAME)
 
@@ -17,13 +17,14 @@ $(NAME): $(OBJS)
 	$(CXX) $(CXXFLAGS) -c $< -o $@ $(HEADERS)
 
 clean:
-	$(RM) $(OBJS) $(DEBUG_OBJS)
+	$(RM) $(OBJS)
 	@echo "Cleaned object files"
 
 fclean: clean
-	$(RM) $(NAME) $(NAME)_debug
+	$(RM) $(NAME)
 	@echo "Fully Cleaned"
 
 re: fclean all
 
-.PHONY: all clean fclean re debug
+.PHONY: all clean fclean re
+

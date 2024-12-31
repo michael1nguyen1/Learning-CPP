@@ -1,18 +1,22 @@
 #pragma once
 
 #include <cstdint>
+#include <string>
 
 struct Data{
-	int blah;
+	int squidID;
+	std::string name;
+	
 };
 
 
 class Serializer{
-	Serializer() = delete;
-	Serializer(const Serializer&) = delete;
-	Serializer& operator=(const Serializer&) = delete;
-	~Serializer() = delete;
+	public:
+		Serializer() = delete;
+		Serializer(const Serializer&) = delete;
+		Serializer& operator=(const Serializer&) = delete;
+		~Serializer() = delete;
 
-	static uintptr_t serialize(Data* ptr);
-	static Data* deserialize(uintptr_t raw);
+		static uintptr_t serialize(Data* ptr);
+		static Data* deserialize(uintptr_t raw);
 };
