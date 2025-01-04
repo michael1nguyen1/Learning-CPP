@@ -3,6 +3,7 @@
 #include  "B.hpp"
 #include  "C.hpp"
 
+//learned dynamic_cast
 int main(){
 	Base *derived = generate();
 	A a;

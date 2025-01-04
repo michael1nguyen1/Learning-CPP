@@ -1,6 +1,7 @@
 #include "Serializer.hpp"
 #include <iostream>
 
+//learned reinterpret_cast
 int main(void){
 	Data squidData = {2, "Bob"};
 	Data *squidDataPtr = &squidData;
