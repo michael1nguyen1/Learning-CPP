@@ -2,4 +2,4 @@
 
 B::B(){}
 
-B::~B(){delete this;}
+B::~B(){}

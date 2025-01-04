@@ -3,7 +3,7 @@ HEADERS = -I ./include
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++20
-SRCS = src/Serializer.cpp src/main.cpp
+SRCS = src/A.cpp src/B.cpp src/C.cpp src/Base.cpp src/main.cpp
 OBJS = $(SRCS:.cpp=.o)
 RM = rm -rf
 

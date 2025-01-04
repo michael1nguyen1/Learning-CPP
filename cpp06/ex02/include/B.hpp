@@ -2,10 +2,10 @@
 
 #include "Base.hpp"
 
-class C : Base {
+class B : public Base {
 	public:
-		C();
-		C(const C&) = delete;
-		C& operator=(const C&) = delete;
-		~C() override;
+		B();
+		B(const B&) = delete;
+		B& operator=(const B&) = delete;
+		~B() override;
 };

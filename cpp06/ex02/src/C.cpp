@@ -2,4 +2,4 @@
 
 C::C(){}
 
-C::~C(){delete this;}
+C::~C(){}

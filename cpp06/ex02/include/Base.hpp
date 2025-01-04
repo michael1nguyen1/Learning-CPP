@@ -1,9 +1,5 @@
 #pragma once
 
-#include "A.hpp"
-#include "B.hpp"
-#include "C.hpp"
-
 class Base{
 	public:
 		Base();
@@ -11,7 +7,10 @@ class Base{
 		Base& operator=(const Base&) = delete;
 		virtual ~Base();
 
-		Base* generate(void);
 		void identify(Base* p);
 		void identify(Base& p);
 };
+
+Base* generate(void);
+void identify(Base* p);
+void identify(Base& p);

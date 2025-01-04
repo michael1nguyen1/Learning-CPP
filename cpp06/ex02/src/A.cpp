@@ -1,5 +1,5 @@
 #include "A.hpp"
 
-B::B(){}
+A::A(){}
 
-B::~B(){delete this;}
+A::~A(){}
