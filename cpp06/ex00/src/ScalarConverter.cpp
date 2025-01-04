@@ -1,5 +1,4 @@
 #include "ScalarConverter.hpp"
-#include "ScalarConverter.tpp"
 
 bool isNumber(const std::string& str){
 	return str.find_first_not_of("-+0123456789") == std::string::npos;

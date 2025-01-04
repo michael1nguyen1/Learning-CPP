@@ -6,7 +6,7 @@
 #include <time.h>
 #include <iostream>
 
-Base::Base(){}
+// Base::Base(){}
 
 Base::~Base(){}
 

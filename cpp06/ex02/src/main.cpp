@@ -5,10 +5,10 @@
 
 //learned dynamic_cast
 int main(){
-	Base *derived = generate();
 	A a;
     B b;
     C c;
+	Base *derived = generate();
 
     identify(a);
     identify(b);
@@ -17,5 +17,8 @@ int main(){
     identify(&b);
     identify(&c);
 
-	identify(derived);
+	if (derived){
+		identify(derived);
+		delete derived;
+	}
 }
