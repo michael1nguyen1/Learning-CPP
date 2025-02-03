@@ -3,7 +3,7 @@
 template<typename T>
 class Array{
     public:
-        Array() : data(nullptr), length(0) {std::cout << "create \n";}
+        Array() : data(nullptr), length(0) {}
         Array(unsigned int n) : length(n){
             data = new T[n]();
         }
@@ -26,7 +26,7 @@ class Array{
 			return data[i];
 		}
 		~Array(){}
-		size_t size() { return length; }
+		size_t getLength() { return length; }
     private:
         T *data;
         size_t length;
