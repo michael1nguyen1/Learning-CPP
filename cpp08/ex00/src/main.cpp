@@ -4,10 +4,8 @@
 #include <deque>
 
 int main(){
-	std::vector<int> vec;
-	vec.resize(5);
-	std::deque<int> deq;
-	deq.resize(5);
+	std::vector<int> vec (5);
+	std::deque<int> deq (5);
 	int value;
 
 	for (size_t i = 1; i <= vec.size(); i++)
@@ -27,7 +25,7 @@ int main(){
 		value = 4;
 		std::vector<int>::iterator found;
 		found = easyFind(vec, value);
-		std::cout << "Vec position is: " << std::distance(vec.begin(), found) << std::endl;
+		std::cout << "Vec position of value " << value << " is: " << std::distance(vec.begin(), found) << std::endl;
 	}
 	catch (std::out_of_range e){
 		std::cout << value << " " << e.what() << std::endl;
@@ -47,7 +45,7 @@ int main(){
 		value = 6;
 		std::deque<int>::iterator found;
 		found = easyFind(deq, value);
-		std::cout << "Deq position is: " << std::distance(deq.begin(), found) << std::endl;
+		std::cout << "Deq position of value " << value << " is: " << std::distance(deq.begin(), found) << std::endl;
 	}
 	catch (std::out_of_range e){
 		std::cout << e.what() << " " << std::endl;
