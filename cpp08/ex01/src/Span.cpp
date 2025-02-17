@@ -1,6 +1,7 @@
 #include "Span.hpp"
 #include <iostream>
 #include <algorithm>
+#include <limits>
 
 Span::Span() {}
 
@@ -22,32 +23,36 @@ Span& Span::operator=(const Span& other){
 Span::~Span() {}
 
 void Span::addNumber(int number){
-	if (_numbers.size() <= _maxSize)
+
+	if (_numbers.size() < _maxSize)
 		_numbers.emplace_back(number);
 	else
 		throw OverSize();
 }
 
-unsigned int Span::shortestSpan(){
-	unsigned int counter = 1;
+int Span::shortestSpan(){
 
-	if (_numbers.size() <= _maxSize)
-		std::sort(_numbers.begin(), _numbers.end());
-	else
+	if (_numbers.size() <= 1)
 		throw NoSpan();
-	for (size_t i = 0; i < _numbers.size(); i++){
+
+	int counter = std::numeric_limits<int>::max();
+	std::sort(_numbers.begin(), _numbers.end());
+	for (size_t i = 0; i < _numbers.size() - 1; i++){
 		if(_numbers[i + 1] - _numbers[i] < counter)
 			counter = _numbers[i + 1] - _numbers[i];
 	}
 	return counter;
 }
 
-unsigned int Span::longestSpan(){
-	if (_numbers.size() <= _maxSize)
-		std::sort(_numbers.begin(), _numbers.end());
-	else
+int Span::longestSpan(){
+	if (_numbers.size() <= 1){
 		throw NoSpan();
+	}
+
+	std::sort(_numbers.begin(), _numbers.end());
 	return _numbers.back() - _numbers.front();
 }
 
 unsigned int Span::getMax(){ return _maxSize; }
+
+std::vector<int> Span::getNumbers() { return _numbers; }

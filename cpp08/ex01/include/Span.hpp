@@ -12,9 +12,10 @@ class Span{
 		~Span();
 
 		void addNumber(int);
-		unsigned int shortestSpan();
-		unsigned int longestSpan();
+		int shortestSpan();
+		int longestSpan();
 		unsigned int getMax();
+		std::vector<int> getNumbers();
 
 		class NoSpan : public std::exception {
 			const char *what(void) const noexcept { return "No Span Available"; }

@@ -3,7 +3,7 @@ HEADERS = -I ./include
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++20
-SRCS = src/main.cpp
+SRCS = src/main.cpp src/Span.cpp
 OBJS = $(SRCS:.cpp=.o)
 RM = rm -rf
 
