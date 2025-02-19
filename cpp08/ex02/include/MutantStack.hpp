@@ -1,19 +1,20 @@
 #pragma once
 
 #include <iostream>
-#include <deque>
+#include <stack>
+
 
 template <typename T>
-class MutantStack : public std::deque<T> {
+class MutantStack : public std::stack<T> {
 public:
     using iterator = typename std::deque<T>::iterator;
     using const_iterator = typename std::deque<T>::const_iterator;
 
     MutantStack() = default;
-    MutantStack(const MutantStack& other) : std::deque<T>(other) {}
+    MutantStack(const MutantStack& other) : std::stack<T>(other) {}
     MutantStack& operator=(const MutantStack& other) {
         if (this != &other) {
-            std::deque<T>::operator=(other);
+            std::stack<T>::operator=(other);
         }
         return *this;
     }
