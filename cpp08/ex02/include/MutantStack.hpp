@@ -19,8 +19,8 @@ public:
     }
     ~MutantStack() = default;
 
-    iterator begin() { return std::deque<T>::begin(); }
-    iterator end() { return std::deque<T>::end(); }
-    const_iterator begin() const { return std::deque<T>::begin(); }
-    const_iterator end() const { return std::deque<T>::end(); }
+    iterator begin() { return this->c.begin(); }
+    iterator end() { return this->c.end(); }
+    const_iterator begin() const { return this->c.begin(); }
+    const_iterator end() const { return this->c.end(); }
 };
