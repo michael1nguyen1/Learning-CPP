@@ -5,7 +5,10 @@
 
 int main(){
 	{
-		MutantStack<int> mstack;
+
+		MutantStack<int> newstack;
+		MutantStack mstack(newstack);
+		newstack = mstack;
 		mstack.push(5);
 		mstack.push(17);
 		std::cout << mstack.top() << std::endl;

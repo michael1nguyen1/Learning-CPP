@@ -2,6 +2,7 @@
 #include <iostream>
 #include <algorithm>
 #include <limits>
+#include <cmath>
 
 Span::Span() {}
 
@@ -30,7 +31,26 @@ void Span::addNumber(int number){
 		throw OverSize();
 }
 
-int Span::shortestSpan(){
+void Span::addNumbers(std::vector<int>::iterator& pos1, std::vector<int>::iterator& pos2){
+	size_t dist = llabs(std::distance(pos1, pos2));
+	if (pos1 == pos2 && _numbers.size() < _maxSize){
+		addNumber(*pos1);
+		return ;
+	}
+	if (dist + _maxSize < _maxSize){
+		if (pos1 < pos2){
+			for (auto it = pos1; it <= pos2; it++)
+				addNumber(*it);
+		}
+		else{
+			for (auto it = pos2; it <= pos1; it++)
+				addNumber(*it);
+		}
+	}else
+		throw OverSize();
+}
+
+unsigned int Span::shortestSpan(){
 
 	if (_numbers.size() <= 1)
 		throw NoSpan();
@@ -44,7 +64,7 @@ int Span::shortestSpan(){
 	return counter;
 }
 
-int Span::longestSpan(){
+unsigned int Span::longestSpan(){
 	if (_numbers.size() <= 1){
 		throw NoSpan();
 	}
@@ -55,4 +75,4 @@ int Span::longestSpan(){
 
 unsigned int Span::getMax(){ return _maxSize; }
 
-std::vector<int> Span::getNumbers() { return _numbers; }
+std::vector<int>& Span::getNumbers() { return _numbers; }
