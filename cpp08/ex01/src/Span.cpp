@@ -37,16 +37,18 @@ void Span::addNumbers(std::vector<int>::iterator& pos1, std::vector<int>::iterat
 		addNumber(*pos1);
 		return ;
 	}
-	if (dist + _maxSize < _maxSize){
+
+	if (dist + getNumbers().size() < _maxSize){
 		if (pos1 < pos2){
 			for (auto it = pos1; it <= pos2; it++)
 				addNumber(*it);
 		}
 		else{
-			for (auto it = pos2; it <= pos1; it++)
+			for (auto it = pos1; it >= pos2; it--)
 				addNumber(*it);
 		}
-	}else
+	}
+	else
 		throw OverSize();
 }
 

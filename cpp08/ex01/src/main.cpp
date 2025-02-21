@@ -4,7 +4,7 @@
 int main(){
 	Span span1(7);
 	Span span2(5);
-	Span span3;
+	Span span3(0);
 
 	for (int i = 0; i < 5; i++){
 		span1.addNumber(i * (i + 1));
@@ -12,29 +12,30 @@ int main(){
 	span1.addNumber(2147483647);
 	span1.addNumber(-2147483648);
 
+	std::cout << "Printing span1\n";
 	for (const auto& it : span1.getNumbers())
 		std::cout << it << "\n";
-
+	
+	std::vector<int>::iterator begin = span1.getNumbers().begin();
+	std::vector<int>::iterator fifth = span1.getNumbers().end() - 3;
 	try{
-		std::cout << "Span1 Shortest span is: " << span1.shortestSpan() << std::endl;
+		span2.addNumbers(begin, fifth);
+		std::cout << "\nPrinting span2\n";
+		for (const auto& it : span2.getNumbers())
+			std::cout << it << "\n";
+	}
+	catch (const std::exception& e){
+		std::cout << "Span2 Exception thrown: " << e.what() << std::endl;
+	}
+	
+	try{
+		std::cout << "\nSpan1 Shortest span is: " << span1.shortestSpan() << std::endl;
 		std::cout << "Span1 Longest span is: " << span1.longestSpan() << std::endl;
 	}
 	catch (const std::exception& e){
 		std::cout << e.what() << std::endl;
 	}
 	
-
-	std::vector<int>::iterator begin = span1.getNumbers().begin();
-	std::vector<int>::iterator fifth = span1.getNumbers().end();
-	fifth -= 2;
-
-	try{
-		span2.addNumbers(begin, fifth);
-	}
-	catch (const std::exception& e){
-		std::cout << "\nSpan2 Exception thrown: " << e.what() << std::endl;
-	}
-
 	try{
 		span1.addNumber(4);
 	}
@@ -43,23 +44,22 @@ int main(){
 	}
 
 	try{
-		span2.longestSpan();
+		span3.addNumber(12);
 	}
 	catch (const std::exception& e){
-		std::cout << "Span2 Exception thrown: " << e.what() << std::endl;
+		std::cout << "Span3 Exception thrown: " << e.what() << std::endl;
+	}
+	try{
+		span3.longestSpan();
+	}
+	catch (const std::exception& e){
+		std::cout << "Span3 Exception thrown: " << e.what() << std::endl;
 	}
 
 	try{
-		span2.shortestSpan();
+		span3.shortestSpan();
 	}
 	catch (const std::exception& e){
-		std::cout << "Span2 Exception thrown: " << e.what() << std::endl;
-	}
-
-	try{
-		span2.addNumber(12);
-	}
-	catch (const std::exception& e){
-		std::cout << "Span2 Exception thrown: " << e.what() << std::endl;
+		std::cout << "Span3 Exception thrown: " << e.what() << std::endl;
 	}
 }
