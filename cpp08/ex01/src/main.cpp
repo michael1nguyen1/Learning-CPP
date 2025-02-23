@@ -3,11 +3,11 @@
 
 int main(){
 	Span span1(7);
-	Span span2(5);
+	Span span2(7);
 	Span span3(0);
 
 	for (int i = 0; i < 5; i++){
-		span1.addNumber(i * (i + 1));
+		span1.addNumber(i);
 	}
 	span1.addNumber(2147483647);
 	span1.addNumber(-2147483648);
@@ -17,9 +17,9 @@ int main(){
 		std::cout << it << "\n";
 	
 	std::vector<int>::iterator begin = span1.getNumbers().begin();
-	std::vector<int>::iterator fifth = span1.getNumbers().end() - 3;
+	std::vector<int>::iterator end = span1.getNumbers().end() - 1;
 	try{
-		span2.addNumbers(begin, fifth);
+		span2.addNumbers(begin, end);
 		std::cout << "\nPrinting span2\n";
 		for (const auto& it : span2.getNumbers())
 			std::cout << it << "\n";
