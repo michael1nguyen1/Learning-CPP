@@ -2,6 +2,7 @@
 
 #include <unordered_map>
 #include <string>
+#include <exception>
 
 class Bitcoin{
 	public:
@@ -12,5 +13,10 @@ class Bitcoin{
 		~Bitcoin() = default;
 
 	private:
-		std::unordered_map<std::string, float> _data {}; 
+		void _validateHeader(std::ifstream&, std::string&);
+		std::unordered_map<std::string, float> _data {};
+
+	class ValidateFile : std::exception{
+		
+	};
 };
