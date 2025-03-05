@@ -13,10 +13,11 @@ class Bitcoin{
 		~Bitcoin() = default;
 
 	private:
-		void _validateHeader(std::ifstream&, std::string&);
+		void _validateHeaderRow(std::ifstream&);
+		void _validateDataRows(std::ifstream&);
 		std::unordered_map<std::string, float> _data {};
 
-	class ValidateFile : std::exception{
-		
+	class ValidateFile : public std::exception{
+		const char *what() const noexcept { return "Stop doing stupid stuff bad data.csv"; }
 	};
 };

@@ -7,8 +7,12 @@ int main(int argc, char **argv){
 		return (-1);
 	}
 
-
-	std::string file = argv[1];
-	std::cout << "argv is " << file << "\n";
-	Bitcoin blah(file);
+	try{
+		std::string file = argv[1];
+		std::cout << "argv is " << file << "\n";
+		Bitcoin blah(file);
+	}
+	catch (const std::exception& e){
+		std::cout << e.what() << std::endl;
+	}
 }
