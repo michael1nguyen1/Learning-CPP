@@ -1,23 +1,22 @@
 #pragma once
 
-#include <unordered_map>
+#include <map>
 #include <string>
 #include <exception>
 
 class Bitcoin{
 	public:
-		Bitcoin() = default;
-		Bitcoin(const std::string&);
+		Bitcoin();
 		Bitcoin(const Bitcoin&);
 		Bitcoin& operator=(const Bitcoin&);
 		~Bitcoin() = default;
+		void validateInputFile(const std::string&);
+		bool validateDate(std::string);
 
 	private:
-		void _validateHeaderRow(std::ifstream&);
-		void _validateDataRows(std::ifstream&);
-		std::unordered_map<std::string, float> _data {};
+		std::map<std::string, float> _data {};
 
 	class ValidateFile : public std::exception{
-		const char *what() const noexcept { return "Stop doing stupid stuff bad data.csv"; }
+		const char *what() const noexcept { return "Error: could not open file"; }
 	};
 };

@@ -9,8 +9,8 @@ int main(int argc, char **argv){
 
 	try{
 		std::string file = argv[1];
-		std::cout << "argv is " << file << "\n";
-		Bitcoin blah(file);
+		Bitcoin blah;
+		blah.validateInputFile(argv[1]);
 	}
 	catch (const std::exception& e){
 		std::cout << e.what() << std::endl;

@@ -5,44 +5,80 @@
 #include <regex>
 #include <chrono>
 
-Bitcoin::Bitcoin(const std::string& file){
-	std::ifstream data(file);
 
-	if (!data.is_open())
-		throw std::runtime_error("Failed opening file");
-
-	_validateHeaderRow(data);
-	_validateDataRows(data);
-		
+Bitcoin::Bitcoin(){
+	std::ifstream dataBase("data.csv");
 	
-	for (auto it = _data.begin(); it != _data.end(); ++it){
-		std::cout << it->first << " " << it->second << std::endl;
+	if (!dataBase.is_open())
+		throw std::runtime_error("Failed to open data.csv");
+	
+	std::string line;
+	float price;
+
+	getline(dataBase, line);
+	while (getline(dataBase, line)){
+		std::stringstream(line.substr(line.find(",") + 1)) >> price;
+		_data.emplace(line.substr(0, line.find(",")), price);
 	}
 }
 
-void Bitcoin::_validateHeaderRow(std::ifstream& data){
-	std::string line;
-	std::getline(data, line);
-	std::regex pattern("(date,exchange_rate)");
-	if (std::regex_match(line, pattern))
-		return ;
-	else
+Bitcoin::Bitcoin(const Bitcoin& other) : _data(other._data) {}
+
+Bitcoin& Bitcoin::operator=(const Bitcoin& other){
+	if (this != &other){
+		_data = other._data;
+	}
+	return *this;
+}
+
+
+void Bitcoin::validateInputFile(const std::string& file){
+	std::ifstream inputFile(file);
+	
+	if (!inputFile.is_open())
 		throw ValidateFile();
+
+	std::string line;
+	std::smatch match;
+	std::regex pattern(R"(^(\d{4}-\d{2}-\d{2})\s\|\s(-?\d*(\.\d+)?)$)");
+
+	std::getline(inputFile, line);
+	while (std::getline(inputFile, line)){
+		if (!std::regex_match(line, match, pattern) || 
+			!validateDate(match[1].str())){
+			std::cout << "Error: bad input => " + line << "\n";
+			continue;
+		}
+		float value = stof(match[4]);
+		if (value < 0){
+			std::cout << "Error: not a positive number.\n";
+			continue;
+		}
+
+		if (value > 1000){
+			std::cout << "Error: too large a number.\n";
+			continue;
+		}
+		
+		auto it = _data.lower_bound(match[1]);
+		if (it != _data.end() && match[1] == it->first){
+			std::cout << match[1] << " => " << value << " = " 
+			<< value * it->second << "\n";
+		}
+		else{
+			--it;
+			std::cout << match[1] << " => " << value << " = " 
+			<< value * it->second << "\n";
+		}
+
+	}
 }
 
-void Bitcoin::_validateDataRows(std::ifstream& data){
-	std::string line;
-	std::regex pattern(R"(^\d{4}-\d{2}-\d{2},\d+(\.\d{1,2})?$)");
+bool Bitcoin::validateDate(std::string str){
 
-	std::chrono::year_month_day date;
-	while (std::getline(data, line)){
-		if (std::regex_match(line, pattern))
-		// std::string key, value;
-		// std::istringstream lineStream(line);
-		// 	if (std::getline(lineStream, key, ',') && std::getline(lineStream, value)){
-		// 		_data.emplace(key, std::stof(value));
-		// 	}	
-		// 	key.clear();
-		// 	value.clear();
-	}
+	std::istringstream ss(str);
+    std::chrono::year_month_day ymd;
+    ss >> std::chrono::parse("%Y-%m-%d", ymd);
+
+	return ymd.ok();
 }
