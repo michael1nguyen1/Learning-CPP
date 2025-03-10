@@ -10,7 +10,7 @@ int main(int argc, char **argv){
 	try{
 		std::string file = argv[1];
 		Bitcoin blah;
-		blah.validateInputFile(argv[1]);
+		blah.exchange(argv[1]);
 	}
 	catch (const std::exception& e){
 		std::cout << e.what() << std::endl;

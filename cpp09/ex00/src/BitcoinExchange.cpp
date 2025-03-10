@@ -32,7 +32,7 @@ Bitcoin& Bitcoin::operator=(const Bitcoin& other){
 }
 
 
-void Bitcoin::validateInputFile(const std::string& file){
+void Bitcoin::exchange(const std::string& file){
 	std::ifstream inputFile(file);
 	
 	if (!inputFile.is_open())
@@ -49,7 +49,7 @@ void Bitcoin::validateInputFile(const std::string& file){
 			std::cout << "Error: bad input => " + line << "\n";
 			continue;
 		}
-		float value = stof(match[4]);
+		float value = stof(match[2]);
 		if (value < 0){
 			std::cout << "Error: not a positive number.\n";
 			continue;
@@ -76,9 +76,16 @@ void Bitcoin::validateInputFile(const std::string& file){
 
 bool Bitcoin::validateDate(std::string str){
 
+	int year, month, day;
+	char dash1, dash2;
 	std::istringstream ss(str);
-    std::chrono::year_month_day ymd;
-    ss >> std::chrono::parse("%Y-%m-%d", ymd);
+
+	ss >> year >> dash1 >> month >> dash2 >> day;
+    std::chrono::year_month_day ymd { 
+		std::chrono::year{year},
+		std::chrono::month{static_cast<unsigned int>(month)},
+		std::chrono::day{static_cast<unsigned int>(day)},
+	};
 
 	return ymd.ok();
 }

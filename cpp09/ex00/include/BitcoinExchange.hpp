@@ -10,7 +10,7 @@ class Bitcoin{
 		Bitcoin(const Bitcoin&);
 		Bitcoin& operator=(const Bitcoin&);
 		~Bitcoin() = default;
-		void validateInputFile(const std::string&);
+		void exchange(const std::string&);
 		bool validateDate(std::string);
 
 	private:
