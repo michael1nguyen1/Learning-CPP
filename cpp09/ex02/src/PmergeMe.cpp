@@ -1,68 +1,62 @@
 #include "PmergeMe.hpp"
 
 void PmergeMe::fordJohnsonMe(std::vector<int>& vec, std::deque<int>& deq) {
-    // Base cases
     if (vec.size() <= 1) {
         return; // Already sorted
     }
     
-    // Handle odd element if present
-    bool hasLonely = false;
-    
+    // Handle odd element if present    
     if (vec.size() % 2 != 0) {
         vecLonelyNum = vec.back();
         vec.pop_back();
         deqLonelyNum = deq.back();
         deq.pop_back();
-        hasLonely = true;
+        _hasLonely = true;
     }
-    
-    // Step 1: Form pairs and order them (larger first)
-    std::vector<std::pair<int, int>> vecPairs;
-    std::deque<std::pair<int, int>> deqPairs;
+    std::vector<std::pair<int, int>> _vecPairs;
+    std::vector<std::pair<int, int>> _deqPairs;
     
     for (size_t i = 0; i < vec.size(); i += 2) {
         int a = vec[i];
         int b = vec[i+1];
         
-        if (a < b) {
-            vecPairs.push_back({b, a});
-        } else {
-            vecPairs.push_back({a, b});
-        }
-        
+        if (a < b)
+            _vecPairs.push_back({b, a});
+        else
+            _vecPairs.push_back({a, b});
         a = deq[i];
         b = deq[i+1];
-        
-        if (a < b) {
-            deqPairs.push_back({b, a});
-        } else {
-            deqPairs.push_back({a, b});
-        }
+        if (a < b)
+            _deqPairs.push_back({b, a});
+        else
+            _deqPairs.push_back({a, b});
     }
     
     // Step 2: Extract larger elements for recursive sorting
-    std::vector<int> vecLarger;
-    std::deque<int> deqLarger;
+    std::vector<int> _vecLarger;
+    std::deque<int> _deqLarger;
     
-    for (const auto& pair : vecPairs) {
-        vecLarger.push_back(pair.first);
+    for (const auto& pair : _vecPairs) {
+        _vecLarger.push_back(pair.first);
     }
     
-    for (const auto& pair : deqPairs) {
-        deqLarger.push_back(pair.first);
+    for (const auto& pair : _deqPairs) {
+        _deqLarger.push_back(pair.first);
     }
+    
+    // std::cout << "printing\n";
+    // for(auto&pair : _vecPairs)
+    //     std::cout << pair.first << " ";
+    // std::cout << std::endl;
     
     // Step 3: Recursively sort the larger elements
-    fordJohnsonMe(vecLarger, deqLarger);
-    
-    // Step 4: Rebuild our containers with just the sorted larger elements
+    fordJohnsonMe(_vecLarger, _deqLarger);
     vec.clear();
     deq.clear();
     
-    for (size_t i = 0; i < vecLarger.size(); i++) {
-        vec.push_back(vecLarger[i]);
-        deq.push_back(deqLarger[i]);
+    for (size_t i = 0; i < _vecLarger.size(); i++) {
+        vec.push_back(_vecLarger[i]);
+        deq.push_back(_deqLarger[i]);
     }
     
     // Debug: Print the sorted larger elements
@@ -74,9 +68,9 @@ void PmergeMe::fordJohnsonMe(std::vector<int>& vec, std::deque<int>& deq) {
     
     // Step 5: Insert the smaller elements using binary insertion
     // For simplicity, we'll insert them in order for this example
-    for (size_t i = 0; i < vecPairs.size(); i++) {
-        int smallVec = vecPairs[i].second;
-        int smallDeq = deqPairs[i].second;
+    for (size_t i = 0; i < _vecPairs.size(); i++) {
+        int smallVec = _vecPairs[i].second;
+        int smallDeq = _deqPairs[i].second;
         
         // Binary search to find insertion position
         size_t pos = binarySearch(vec, smallVec);
@@ -87,14 +81,13 @@ void PmergeMe::fordJohnsonMe(std::vector<int>& vec, std::deque<int>& deq) {
     }
     
     // Step 6: Insert the lonely element if it exists
-    if (hasLonely) {
+    if (_hasLonely) {
         size_t pos = binarySearch(vec, vecLonelyNum);
         vec.insert(vec.begin() + pos, vecLonelyNum);
         deq.insert(deq.begin() + pos, deqLonelyNum);
     }
 }
 
-// Helper function for binary search
 size_t PmergeMe::binarySearch(const std::vector<int>& vec, int value) {
     size_t left = 0;
     size_t right = vec.size();

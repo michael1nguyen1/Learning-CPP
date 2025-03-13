@@ -21,10 +21,9 @@ class PmergeMe{
 
 		
 		private:
-			std::vector<std::pair<int, int>> _dequePairs;
-			std::vector<std::pair<int, int>> _vectorPairs;
-			std::deque<int> _dequeData;
-			std::vector<int> _vectorData;
+			std::deque<int> _deqLarger;
+			std::vector<int> _vecLarger;
 			int vecLonelyNum = -1;
 			int deqLonelyNum = -1;
+			bool _hasLonely = false;
 };
