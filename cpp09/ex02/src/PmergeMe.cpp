@@ -48,8 +48,26 @@ void PmergeMe::fordJohnsonMe(std::vector<int>& vec) {
     
     //Recursively sort the larger elements
     fordJohnsonMe(vecLarger);
-    vec.clear();
     
+    if (vecLarger.size() == _jacobSeq.size()){
+        
+        std::cout << "going in\n";
+        std::vector<std::pair<int, int>> sortedPairs;
+        std::vector<bool> used(vecPairs.size(), false);
+    
+        for (const auto& largeElement : vecLarger) {
+            for (size_t i = 0; i < vecPairs.size(); ++i) {
+                if (!used[i] && vecPairs[i].first == largeElement) {
+                        sortedPairs.push_back(vecPairs[i]);
+                        used[i] = true;
+                        break;
+                }
+            }
+         }
+        vecPairs = sortedPairs;
+     }
+            
+    vec.clear();
     for (size_t i = 0; i < vecLarger.size(); i++)
         vec.push_back(vecLarger[i]);
     
@@ -114,6 +132,7 @@ void PmergeMe::fordJohnsonMe(std::deque<int>& deq){
     
     //Recursively sort the larger elements
     fordJohnsonMe(deqLarger);
+    
     deq.clear();
     
     for (size_t i = 0; i < deqLarger.size(); i++)
@@ -141,9 +160,9 @@ void PmergeMe::fordJohnsonMe(std::deque<int>& deq){
         deq.insert(deq.begin() + index, lonelyNum);
     }
 
-    std::cout << "Sorted larger elements: ";
-    for (auto& element : deq) {
-        std::cout << element << " ";
-    }
-    std::cout << std::endl;
+    // std::cout << "Sorted larger elements: ";
+    // for (auto& element : deq) {
+    //     std::cout << element << " ";
+    // }
+    // std::cout << std::endl;
 }

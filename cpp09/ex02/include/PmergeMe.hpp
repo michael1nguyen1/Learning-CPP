@@ -16,10 +16,7 @@ class PmergeMe{
 
 		void fordJohnsonMe(std::vector<int>&);
 		void fordJohnsonMe(std::deque<int>& deq);
-		// void sortpairs(std::vector<int>&, std::deque<int>&);
-		// size_t getVectorSize() const;
-		// size_t getDequeSize() const;
-		
+
 		private:
 			std::deque<int> _deqLarger;
 			std::vector<int> _vecLarger;
