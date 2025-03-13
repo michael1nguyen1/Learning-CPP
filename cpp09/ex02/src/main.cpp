@@ -3,9 +3,9 @@
 
 int main(int argc, char **argv){
 	
-	PmergeMe blah;
 	std::vector<int> vec;
 	std::deque<int> deq;
+	int counter = 0;
 
 	try{
 		for (int i = 1; i < argc; i++){
@@ -15,8 +15,12 @@ int main(int argc, char **argv){
 			}
 			deq.emplace_back(std::stoi(argv[i]));
 			vec.emplace_back(std::stoi(argv[i]));
+			counter++;
 		}
-		blah.fordJohnsonMe(vec, deq);
+
+		PmergeMe blah(counter);
+		blah.fordJohnsonMe(vec);
+		blah.fordJohnsonMe(deq);
 	}
 	catch(std::exception &e){
 		std::cout << e.what() << std::endl;
