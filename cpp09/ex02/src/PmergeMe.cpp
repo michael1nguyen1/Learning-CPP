@@ -32,7 +32,7 @@ void PmergeMe::fordJohnsonMe(std::vector<int>& vec, std::deque<int>& deq) {
             _deqPairs.push_back({a, b});
     }
     
-    // Step 2: Extract larger elements for recursive sorting
+    // Extract larger elements for recursive sorting
     std::vector<int> _vecLarger;
     std::deque<int> _deqLarger;
     
@@ -49,7 +49,7 @@ void PmergeMe::fordJohnsonMe(std::vector<int>& vec, std::deque<int>& deq) {
     //     std::cout << pair.first << " ";
     // std::cout << std::endl;
     
-    // Step 3: Recursively sort the larger elements
+    //Recursively sort the larger elements
     fordJohnsonMe(_vecLarger, _deqLarger);
     vec.clear();
     deq.clear();
@@ -59,28 +59,24 @@ void PmergeMe::fordJohnsonMe(std::vector<int>& vec, std::deque<int>& deq) {
         deq.push_back(_deqLarger[i]);
     }
     
-    // Debug: Print the sorted larger elements
     std::cout << "Sorted larger elements: ";
     for (auto& element : vec) {
         std::cout << element << " ";
     }
     std::cout << std::endl;
     
-    // Step 5: Insert the smaller elements using binary insertion
-    // For simplicity, we'll insert them in order for this example
+    // Insert the smaller elements using binary insertion
     for (size_t i = 0; i < _vecPairs.size(); i++) {
         int smallVec = _vecPairs[i].second;
         int smallDeq = _deqPairs[i].second;
         
-        // Binary search to find insertion position
         size_t pos = binarySearch(vec, smallVec);
         
-        // Insert at the found position
         vec.insert(vec.begin() + pos, smallVec);
         deq.insert(deq.begin() + pos, smallDeq);
     }
     
-    // Step 6: Insert the lonely element if it exists
+    // Insert the lonely element if it exists
     if (_hasLonely) {
         size_t pos = binarySearch(vec, vecLonelyNum);
         vec.insert(vec.begin() + pos, vecLonelyNum);
