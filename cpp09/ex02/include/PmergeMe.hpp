@@ -17,8 +17,6 @@ class PmergeMe{
 		// void sortpairs(std::vector<int>&, std::deque<int>&);
 		// size_t getVectorSize() const;
 		// size_t getDequeSize() const;
-		size_t binarySearch(const std::vector<int>& vec, int value);
-
 		
 		private:
 			std::deque<int> _deqLarger;

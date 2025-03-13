@@ -1,11 +1,13 @@
 #include "PmergeMe.hpp"
 
 void PmergeMe::fordJohnsonMe(std::vector<int>& vec, std::deque<int>& deq) {
+    
+    //base condition
     if (vec.size() <= 1) {
-        return; // Already sorted
+        return;
     }
     
-    // Handle odd element if present    
+    // Handle odd element  
     if (vec.size() % 2 != 0) {
         vecLonelyNum = vec.back();
         vec.pop_back();
@@ -13,6 +15,7 @@ void PmergeMe::fordJohnsonMe(std::vector<int>& vec, std::deque<int>& deq) {
         deq.pop_back();
         _hasLonely = true;
     }
+
     std::vector<std::pair<int, int>> _vecPairs;
     std::vector<std::pair<int, int>> _deqPairs;
     
@@ -44,11 +47,6 @@ void PmergeMe::fordJohnsonMe(std::vector<int>& vec, std::deque<int>& deq) {
         _deqLarger.push_back(pair.first);
     }
     
-    // std::cout << "printing\n";
-    // for(auto&pair : _vecPairs)
-    //     std::cout << pair.first << " ";
-    // std::cout << std::endl;
-    
     //Recursively sort the larger elements
     fordJohnsonMe(_vecLarger, _deqLarger);
     vec.clear();
@@ -59,43 +57,37 @@ void PmergeMe::fordJohnsonMe(std::vector<int>& vec, std::deque<int>& deq) {
         deq.push_back(_deqLarger[i]);
     }
     
-    std::cout << "Sorted larger elements: ";
-    for (auto& element : vec) {
-        std::cout << element << " ";
-    }
-    std::cout << std::endl;
+    // std::cout << "Sorted larger elements: ";
+    // for (auto& element : vec) {
+    //     std::cout << element << " ";
+    // }
+    // std::cout << std::endl;
     
     // Insert the smaller elements using binary insertion
     for (size_t i = 0; i < _vecPairs.size(); i++) {
         int smallVec = _vecPairs[i].second;
         int smallDeq = _deqPairs[i].second;
         
-        size_t pos = binarySearch(vec, smallVec);
+        auto pos = std::lower_bound(vec.begin(), vec.end(), smallVec);
+        vec.insert(pos, smallVec);
         
-        vec.insert(vec.begin() + pos, smallVec);
-        deq.insert(deq.begin() + pos, smallDeq);
+        auto pos1 = std::lower_bound(deq.begin(), deq.end(), smallDeq);
+        size_t index = std::distance (deq.begin(), pos1);
+        deq.insert(deq.begin() + index, smallDeq);
     }
     
     // Insert the lonely element if it exists
     if (_hasLonely) {
-        size_t pos = binarySearch(vec, vecLonelyNum);
-        vec.insert(vec.begin() + pos, vecLonelyNum);
-        deq.insert(deq.begin() + pos, deqLonelyNum);
+        auto pos = std::lower_bound(vec.begin(), vec.end(), vecLonelyNum);
+        vec.insert(pos, vecLonelyNum);
+        
+        auto pos1 = std::lower_bound(deq.begin(), deq.end(), deqLonelyNum);
+        size_t index = std::distance (deq.begin(), pos1);
+        deq.insert(deq.begin() + index, deqLonelyNum);
     }
-}
-
-size_t PmergeMe::binarySearch(const std::vector<int>& vec, int value) {
-    size_t left = 0;
-    size_t right = vec.size();
-    
-    while (left < right) {
-        size_t mid = left + (right - left) / 2;
-        if (vec[mid] < value) {
-            left = mid + 1;
-        } else {
-            right = mid;
-        }
+    std::cout << "Sorted larger elements: ";
+    for (auto& element : vec) {
+        std::cout << element << " ";
     }
-    
-    return left;
+    std::cout << std::endl;
 }
