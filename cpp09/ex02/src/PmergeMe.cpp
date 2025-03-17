@@ -26,38 +26,29 @@ void PmergeMe::fordJohnsonMe(std::vector<int>& vec) {
         hasLonely = true;
     }
 
+	// Create sorted pairs of elements according to the larger number and extract larger elements for recursive sorting
     std::vector<std::pair<int, int>> vecPairs;
+	std::vector<int> vecLarger;
+	std::vector<size_t> indices;
     for (size_t i = 0; i < vec.size(); i += 2) {
         int a = vec[i];
         int b = vec[i+1];
         vecPairs.emplace_back(std::max(a, b), std::min(a, b));
-    }
-    
-    // Extract larger elements for recursive sorting
-    std::vector<int> vecLarger;
-    for (const auto& pair : vecPairs) {
-        vecLarger.push_back(pair.first);
+		vecLarger.push_back(std::max(a, b));
+		indices.push_back(i/2);
     }
     
     //Recursively sort the larger elements
     fordJohnsonMe(vecLarger);
-
-	//sort the pairs based on relationship of Larger numbers
+	
 	std::vector<std::pair<int, int>> sortedPairs;
-	std::vector<bool> used(vecPairs.size(), false);
-
-	for (const auto& largeElement : vecLarger) {
-		for (size_t i = 0; i < vecPairs.size(); ++i) {
-			if (!used[i] && vecPairs[i].first == largeElement) {
-					sortedPairs.push_back(vecPairs[i]);
-					used[i] = true;
-					break;
-			}
-		}
+	for (size_t idx : indices) {
+		sortedPairs.push_back(vecPairs[idx]);
 	}
 	vecPairs = sortedPairs;
-            
-    vec.clear();
+    
+	//store the sorted larger elements back into the original vector
+	vec.clear();
     for (size_t i = 0; i < vecLarger.size(); i++){
         vec.push_back(vecLarger[i]);
 	}
@@ -69,33 +60,17 @@ void PmergeMe::fordJohnsonMe(std::vector<int>& vec) {
 		vec.insert(pos, smallNum);
 	}
 
-	// std::cout << "before first elements: ";
-    // for (auto& element : vec) {
-    //     std::cout << element << " ";
-	// }
-    // std::cout << std::endl;
-	// std::cout << "Small number of pair elements: ";
-    // for (auto& element : vecPairs) {
-    //     std::cout << element.second << " ";
-	// }
-    // std::cout << std::endl;
 	//first round of small numbers
 	std::vector<bool> tracker (vecPairs.size(), false);
 	tracker[0] = true;
 	for (size_t i = 1, index = _jacobSeq[i]; index < vecPairs.size(); index = _jacobSeq[++i]) {
-        if(!tracker[index]){
+		if(!tracker[index]){
 			int smallNum = vecPairs[index].second;
 			auto pos = std::lower_bound(vec.begin(), vec.begin() + index + i, smallNum);
 			vec.insert(pos, smallNum);
 			tracker[index] = true;
 		}
     }
-
-	// std::cout << "after first elements: ";
-    // for (auto& element : vec) {
-    //     std::cout << element << " ";
-    // }
-    // std::cout << std::endl;
 
 	//second round of small numbers
 	for (size_t i = 1; i < vecPairs.size(); i++){
@@ -111,13 +86,6 @@ void PmergeMe::fordJohnsonMe(std::vector<int>& vec) {
         auto pos = std::lower_bound(vec.begin(), vec.end(), lonelyNum);
         vec.insert(pos, lonelyNum);
     }
-
-    // std::cout << "Sorted elements: ";
-    for (auto& element : vec) {
-        std::cout << element << " ";
-    }
-    std::cout << "\n";
-    // std::cout << std::endl;
 }
 
 void PmergeMe::fordJohnsonMe(std::deque<int>& deq){

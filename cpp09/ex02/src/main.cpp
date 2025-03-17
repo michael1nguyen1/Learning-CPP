@@ -1,4 +1,6 @@
 #include "PmergeMe.hpp"
+#include "Utils.hpp"
+#include <chrono>
 #include <regex>
 
 int main(int argc, char **argv){
@@ -19,8 +21,20 @@ int main(int argc, char **argv){
 		}
 
 		PmergeMe blah(counter);
+		
+		Utils::print(vec, "Before: ");
+		auto start = std::chrono::high_resolution_clock::now();
 		blah.fordJohnsonMe(vec);
+		auto end = std::chrono::high_resolution_clock::now();
+		Utils::print(vec, "After: ");
+		std::cout << "Time to process a range of " << vec.size() << " elements with std::vector: "
+		<< std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count() << "ns" << std::endl;
+
+		start = std::chrono::high_resolution_clock::now();
 		blah.fordJohnsonMe(deq);
+		end = std::chrono::high_resolution_clock::now();
+		std::cout << "Time to process a range of " << deq.size() << " elements with std::deque: "
+		<< std::chrono::duration_cast<std::chrono::nanoseconds>(end - start).count() << "ns" << std::endl;
 	}
 	catch(std::exception &e){
 		std::cout << e.what() << std::endl;
