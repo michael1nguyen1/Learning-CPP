@@ -10,15 +10,13 @@ class PmergeMe{
 	public:
 		PmergeMe() = delete;
 		PmergeMe(const int&);
-		PmergeMe(const PmergeMe&) = delete;
-		PmergeMe& operator=(const PmergeMe&) = delete;
+		PmergeMe(const PmergeMe&);
+		PmergeMe& operator=(const PmergeMe&);
 		~PmergeMe() = default;
 
 		void fordJohnsonMe(std::vector<int>&);
 		void fordJohnsonMe(std::deque<int>& deq);
 
 		private:
-			std::deque<int> _deqLarger;
-			std::vector<int> _vecLarger;
 			std::vector<int> _jacobSeq;
 };

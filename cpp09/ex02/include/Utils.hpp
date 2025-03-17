@@ -1,10 +1,5 @@
 #pragma once
 
-#include <vector>
-#include <deque>
-#include <algorithm>
-#include <iostream>
-
 namespace Utils {
     template <typename Container>
     void print(const Container& container, std::string message) {
